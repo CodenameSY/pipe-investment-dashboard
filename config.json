@@ -5,6 +5,23 @@
     "EXPORT_SCORE": 68,
     "US_POLICY_SCORE": 58
   },
+  "shale_cycle": {
+    "PERMIAN_DUC": 799,
+    "PERMIAN_MONTHLY_COMPLETIONS": 465.7,
+    "PERMIAN_RIGS": null,
+    "FRAC_SPREAD": null,
+    "HP_ACTIVE_RIGS": 147,
+    "HP_SUPERSPEC_UTIL": 95,
+    "HP_MARGIN_DAY": 18669,
+    "PTEN_DRILLING_RIGS": 100,
+    "PTEN_COMPLETION_GP": 140,
+    "PTEN_COMPLETION_PRICING": "IMPROVING",
+    "AS_OF": {
+      "PERMIAN_DUC": "2026-Q2 EIA STEO vintage",
+      "HP": "FY2026 Q3",
+      "PTEN": "2026 Q3 guidance / 2026 Q2 commentary"
+    }
+  },
   "tickers": {
     "세아제강": "306200.KS",
     "넥스틸": "092790.KS",
