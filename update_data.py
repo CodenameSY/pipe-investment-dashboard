@@ -15,18 +15,36 @@ DATA=ROOT/'data.json'; CONFIG=ROOT/'config.json'; HISTORY=ROOT/'history.json'; S
 def load(p, default=None):
     if not p.exists(): return default
     return json.loads(p.read_text(encoding='utf-8'))
-def save(p,o): p.write_text(json.dumps(o,ensure_ascii=False,indent=2),encoding='utf-8')
+
+def save(p,o):
+    p.write_text(json.dumps(o,ensure_ascii=False,indent=2),encoding='utf-8')
+
 def clamp(v): return max(0,min(100,v))
 def pct(a,b): return None if b in (None,0) else round((a/b-1)*100,2)
 
-def latest(symbol):
-    df=yf.download(symbol,period='3mo',auto_adjust=False,progress=False)
+def yf_close(symbol, period='3mo'):
+    df=yf.download(symbol,period=period,auto_adjust=False,progress=False)
     if df.empty: raise RuntimeError(symbol)
     c=df['Close']
     if isinstance(c,pd.DataFrame): c=c.iloc[:,0]
-    c=c.dropna()
-    cur=float(c.iloc[-1]); w=float(c.iloc[-6] if len(c)>=6 else c.iloc[0]); m=float(c.iloc[-22] if len(c)>=22 else c.iloc[0])
+    return c.dropna()
+
+def latest(symbol):
+    c=yf_close(symbol,'3mo')
+    cur=float(c.iloc[-1])
+    w=float(c.iloc[-6] if len(c)>=6 else c.iloc[0])
+    m=float(c.iloc[-22] if len(c)>=22 else c.iloc[0])
     return cur,pct(cur,w),pct(cur,m)
+
+def merge_market_history(rows, mapping):
+    """Merge ~3 months of daily Yahoo Finance history into sparse snapshots."""
+    by_date={r['date']:dict(r) for r in rows if r.get('date')}
+    for key,ticker in mapping.items():
+        c=yf_close(ticker,'3mo')
+        for ts,val in c.items():
+            d=pd.Timestamp(ts).date().isoformat()
+            by_date.setdefault(d,{'date':d})[key]=round(float(val),4)
+    return [by_date[d] for d in sorted(by_date)]
 
 def oil_score(p):
     if p<45:return 30
@@ -42,7 +60,6 @@ def fx_score(v):
     return 48
 
 def hrc_cost_score(v):
-    # Cost-side score only: lower HRC generally helps welded-pipe conversion margin.
     if v <= 700: return 85
     if v <= 850: return 78
     if v <= 1000: return 70
@@ -51,14 +68,8 @@ def hrc_cost_score(v):
     return 42
 
 def fetch_steelbenchmarker_hrc():
-    """Fetch latest USA Hot-Rolled Band from SteelBenchmarker history.pdf.
-
-    SteelBenchmarker publishes the headline price in USD/metric tonne and,
-    in parentheses, the equivalent USD/net ton (short ton). The dashboard
-    uses $/st, so the parenthetical figure is preferred.
-    """
     url='https://steelbenchmarker.com/history.pdf'
-    r=requests.get(url, timeout=30, headers={'User-Agent':'Mozilla/5.0 pipe-investment-dashboard/5.1'})
+    r=requests.get(url, timeout=30, headers={'User-Agent':'Mozilla/5.0 pipe-investment-dashboard/5.2'})
     r.raise_for_status()
     if not r.content.startswith(b'%PDF'):
         raise RuntimeError('SteelBenchmarker history.pdf did not return a PDF')
@@ -67,7 +78,6 @@ def fetch_steelbenchmarker_hrc():
     text=re.sub(r'\s+', ' ', text)
     usa=re.search(r'Region:\s*USA[^:]{0,120}Hot[- ]rolled band:\s*([0-9,]+)(?:\s*\(([0-9,]+)\))?', text, re.I)
     if not usa:
-        # More permissive fallback for PDF text-layout changes.
         usa_pos=re.search(r'Region:\s*USA', text, re.I)
         if not usa_pos: raise RuntimeError('USA section not found in SteelBenchmarker PDF')
         chunk=text[usa_pos.start():usa_pos.start()+1800]
@@ -75,15 +85,23 @@ def fetch_steelbenchmarker_hrc():
         if not usa: raise RuntimeError('USA hot-rolled band price not found')
     metric=float(usa.group(1).replace(',',''))
     short_ton=float(usa.group(2).replace(',','')) if usa.group(2) else round(metric/1.10231131)
-    # Latest release date is the nearest date preceding the first USA section.
     usa_start=usa.start()
     prefix=text[:usa_start]
     dates=list(re.finditer(r'(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4}', prefix, re.I))
     release_date=dates[-1].group(0) if dates else None
     return round(short_ton,2), release_date, url
 
+def latest_value(rows,key):
+    for r in reversed(rows):
+        v=r.get(key)
+        if v is not None:
+            return float(v)
+    return None
+
 def hist_change(rows,key,days):
     if not rows: return None
+    cur=latest_value(rows,key)
+    if cur is None: return None
     now=datetime.now(SEOUL).date(); target=now-timedelta(days=days)
     candidates=[]
     for r in rows:
@@ -93,23 +111,41 @@ def hist_change(rows,key,days):
         if v is not None and dt<=target: candidates.append((dt,float(v)))
     if not candidates:return None
     _,old=max(candidates,key=lambda x:x[0])
-    cur=rows[-1].get(key)
-    return pct(float(cur),old) if cur is not None else None
+    return pct(cur,old)
+
+def merge_today(rows,snap):
+    by_date={r['date']:dict(r) for r in rows if r.get('date')}
+    cur=by_date.get(snap['date'],{'date':snap['date']})
+    cur.update(snap)
+    by_date[snap['date']]=cur
+    return [by_date[d] for d in sorted(by_date)]
 
 def update():
     d=load(DATA); c=load(CONFIG); hist=load(HISTORY,{'snapshots':[]}); errs=[]
-    d['meta']['version']='v5.1'
-    for key,ticker in {'WTI':'CL=F','BRENT':'BZ=F','USDKRW':'KRW=X'}.items():
+    d['meta']['version']='v5.2'
+
+    market_map={'WTI':'CL=F','BRENT':'BZ=F','USDKRW':'KRW=X'}
+
+    # Latest market cards + 3-month daily backfill for charts.
+    for key,ticker in market_map.items():
         try:
             cur,w,m=latest(ticker)
             d['market'][key].update(value=round(cur,2),change_1w=w,change_1m=m)
             d['market'][key]['score']=oil_score(cur) if key!='USDKRW' else fx_score(cur)
-        except Exception as e: errs.append(f'{key}: {e}')
+        except Exception as e:
+            errs.append(f'{key}: {e}')
+
+    try:
+        hist['snapshots']=merge_market_history(hist.setdefault('snapshots',[]),market_map)
+    except Exception as e:
+        errs.append(f'Market history: {e}')
+
     for name,ticker in c['tickers'].items():
         try:
             cur,w,m=latest(ticker)
             d['stocks'][name]={'ticker':ticker,'price':round(cur,0),'change_1w':w,'change_1m':m}
-        except Exception as e: errs.append(f'{name}: {e}')
+        except Exception as e:
+            errs.append(f'{name}: {e}')
 
     # US total rig count: Baker Hughes public page, best effort.
     try:
@@ -118,10 +154,12 @@ def update():
         if m:
             cur=int(m.group(1)); old=d['market']['US_RIGS']['value']
             d['market']['US_RIGS'].update(value=cur,change_1w=cur-int(old),score=int(clamp(55+(cur-500)/3)))
-    except Exception as e: errs.append(f'Rig Count: {e}')
+    except Exception as e:
+        errs.append(f'Rig Count: {e}')
 
     mi=c['manual_inputs']
-    # HRC: automatic SteelBenchmarker pull, with config.json fallback.
+
+    # HRC: automatic SteelBenchmarker pull, with config fallback.
     try:
         hrc, hrc_date, hrc_url = fetch_steelbenchmarker_hrc()
         d['market']['US_HRC'].update(value=hrc, score=hrc_cost_score(hrc), manual=False, source='SteelBenchmarker', source_date=hrc_date, source_url=hrc_url)
@@ -145,10 +183,12 @@ def update():
       'Oil':{'weight':10,'score':oil},'HRC Cost':{'weight':10,'score':d['market']['US_HRC']['score']},
       'Export':{'weight':10,'score':int(mi['EXPORT_SCORE'])},'US Policy':{'weight':10,'score':int(mi['US_POLICY_SCORE'])},
       'FX':{'weight':5,'score':d['market']['USDKRW']['score']}}
+
     total=round(sum(v['weight']*v['score'] for v in comp.values())/100)
 
     rows=hist.setdefault('snapshots',[])
-    prev_score=rows[-1].get('PIPE_SCORE',total) if rows else total
+    score_rows=[r for r in rows if r.get('PIPE_SCORE') is not None]
+    prev_score=score_rows[-1]['PIPE_SCORE'] if score_rows else total
     trend='BULLISH' if total>=70 else ('NEUTRAL' if total>=55 else 'BEARISH')
     trend+=' · IMPROVING' if total>prev_score else (' · WEAKENING' if total<prev_score else ' · FLAT')
     d['score']={'pipe_cycle':total,'trend':trend,'components':comp}
@@ -157,21 +197,29 @@ def update():
     snap={'date':today,'PIPE_SCORE':total}
     for key in ['WTI','BRENT','USDKRW','US_RIGS','OIL_RIGS','US_HRC','US_OCTG','OCTG_HRC_SPREAD']:
         snap[key]=d['market'][key]['value']
-    if rows and rows[-1].get('date')==today: rows[-1]=snap
-    else: rows.append(snap)
+
+    rows=merge_today(rows,snap)
     hist['snapshots']=rows[-730:]
     save(HISTORY,hist)
 
-    # Once enough real snapshots exist, replace manual 1M display changes with history-derived values.
     for key in ['US_HRC','US_OCTG','OCTG_HRC_SPREAD']:
         ch=hist_change(hist['snapshots'],key,28)
-        if ch is not None: d['market'][key]['change_1m']=ch
+        if ch is not None:
+            d['market'][key]['change_1m']=ch
 
-    # Score history now uses dated, real snapshots rather than illustrative bars.
-    recent=hist['snapshots'][-13:]
-    d['history']={'pipe_score':[r['PIPE_SCORE'] for r in recent], 'labels':[r['date'][5:] for r in recent]}
-    d['meta'].update(last_updated=datetime.now(SEOUL).isoformat(timespec='seconds'),mode='auto HRC (SteelBenchmarker) + manual OCTG + persistent history',errors=errs)
+    score_recent=[r for r in hist['snapshots'] if r.get('PIPE_SCORE') is not None][-13:]
+    d['history']={
+        'pipe_score':[r['PIPE_SCORE'] for r in score_recent],
+        'labels':[r['date'][5:] for r in score_recent]
+    }
+
+    d['meta'].update(
+        last_updated=datetime.now(SEOUL).isoformat(timespec='seconds'),
+        mode='3M daily WTI/Brent/USD-KRW + auto HRC + manual OCTG + persistent history',
+        errors=errs
+    )
     save(DATA,d)
     print('UPDATED',d['meta']['last_updated'],'score',total,'history rows',len(hist['snapshots']))
 
-if __name__=='__main__': update()
+if __name__=='__main__':
+    update()
