@@ -12,7 +12,8 @@ from pypdf import PdfReader
 
 ROOT=Path(__file__).resolve().parent
 DATA=ROOT/'data.json'; CONFIG=ROOT/'config.json'; HISTORY=ROOT/'history.json'; SEOUL=ZoneInfo('Asia/Seoul')
-UA={'User-Agent':'Mozilla/5.0 pipe-investment-dashboard/5.5'}
+UA={'User-Agent':'Mozilla/5.0 pipe-investment-dashboard/5.6'}
+BH_PINNED=['https://rigcount.bakerhughes.com/static-files/98600356-2fda-4a58-afa3-f8e663dbdad1']
 
 def load(p, default=None):
     if not p.exists(): return default
@@ -21,12 +22,6 @@ def save(p,o): p.write_text(json.dumps(o,ensure_ascii=False,indent=2),encoding='
 def clamp(v): return max(0,min(100,v))
 def pct(a,b): return None if b in (None,0) else round((float(a)/float(b)-1)*100,2)
 def clean_text(html): return re.sub(r'\s+',' ',re.sub(r'<[^>]+>',' ',html)).replace('&nbsp;',' ')
-def num(x):
-    try:
-        if x is None or (isinstance(x,float) and pd.isna(x)): return None
-        return float(str(x).replace(',','').replace('$','').strip())
-    except Exception: return None
-
 def latest_from_history(rows,key):
     for r in reversed(rows or []):
         if r.get(key) not in (None,''): return r.get(key)
@@ -64,7 +59,7 @@ def hrc_cost_score(v):
     return 42
 
 def fetch_steelbenchmarker_hrc():
-    url='https://steelbenchmarker.com/history.pdf'; r=requests.get(url,timeout=35,headers=UA); r.raise_for_status()
+    url='https://steelbenchmarker.com/history.pdf'; r=requests.get(url,timeout=(10,45),headers=UA); r.raise_for_status()
     if not r.content.startswith(b'%PDF'): raise RuntimeError('SteelBenchmarker did not return PDF')
     text='\n'.join((p.extract_text() or '') for p in PdfReader(BytesIO(r.content)).pages[:6]); text=re.sub(r'\s+',' ',text)
     pos=re.search(r'Region:\s*USA',text,re.I)
@@ -76,26 +71,25 @@ def fetch_steelbenchmarker_hrc():
     return round(st,2),(dates[-1].group(0) if dates else None),url
 
 def excel_links_from_baker():
-    pages=['https://rigcount.bakerhughes.com/','https://rigcount.bakerhughes.com/na-rig-count/']
-    links=[]
-    for page in pages:
-        html=requests.get(page,timeout=30,headers=UA).text
-        for h in re.findall(r'href=["\']([^"\']+)["\']',html,re.I):
-            u=urljoin(page,h)
-            if re.search(r'\.(xlsx|xls)(\?|$)',u,re.I) or 'static-files' in u.lower() or 'rig-count' in u.lower():
-                if u not in links: links.append(u)
-    # Put likely current Excel assets first, but keep broad candidates.
-    links.sort(key=lambda u: (0 if re.search(r'\.(xlsx|xls)(\?|$)',u,re.I) else 1, len(u)))
-    return links[:12]
+    links=list(BH_PINNED)
+    for page in ['https://rigcount.bakerhughes.com/na-rig-count/','https://rigcount.bakerhughes.com/']:
+        try:
+            html=requests.get(page,timeout=(5,8),headers=UA).text
+            for h in re.findall(r'href=["\']([^"\']+)["\']',html,re.I):
+                u=urljoin(page,h)
+                if (re.search(r'\.(xlsx|xls)(\?|$)',u,re.I) or 'static-files' in u.lower()) and u not in links:
+                    links.append(u)
+        except Exception:
+            continue
+    return links[:16]
 
 def find_bh_table(xls):
     for sheet in xls.sheet_names:
-        try: raw=pd.read_excel(xls,sheet_name=sheet,header=None,nrows=40)
+        try: raw=pd.read_excel(xls,sheet_name=sheet,header=None,nrows=45)
         except Exception: continue
-        for hr in range(min(35,len(raw))):
-            vals=[str(x).strip() for x in raw.iloc[hr].tolist()]
-            joined=' | '.join(vals).lower()
-            if 'country' in joined and ('basin' in joined or 'state' in joined) and ('rig count' in joined or 'drill for' in joined or 'trajectory' in joined):
+        for hr in range(min(40,len(raw))):
+            joined=' | '.join(str(x).strip().lower() for x in raw.iloc[hr].tolist())
+            if 'country' in joined and ('rig count' in joined or 'drill for' in joined) and ('basin' in joined or 'state' in joined):
                 try: df=pd.read_excel(xls,sheet_name=sheet,header=hr)
                 except Exception: continue
                 df.columns=[re.sub(r'\s+',' ',str(c)).strip() for c in df.columns]
@@ -112,8 +106,8 @@ def fetch_baker_hughes():
     errors=[]
     for url in excel_links_from_baker():
         try:
-            r=requests.get(url,timeout=45,headers=UA); r.raise_for_status()
-            if not r.content[:4] in (b'PK\x03\x04', b'\xd0\xcf\x11\xe0'): continue
+            r=requests.get(url,timeout=(8,90),headers=UA); r.raise_for_status()
+            if r.content[:4] not in (b'PK\x03\x04', b'\xd0\xcf\x11\xe0'): continue
             xls=pd.ExcelFile(BytesIO(r.content)); found=find_bh_table(xls)
             if not found: continue
             df,country,basin,drill,val,dtc,sheet=found
@@ -127,15 +121,17 @@ def fetch_baker_hughes():
             if basin:
                 permdf=cur[cur[basin].astype(str).str.contains('permian',case=False,na=False)]
                 if not permdf.empty: perm=int(round(permdf[val].sum()))
-            if total and oil and perm: return {'US_RIGS':total,'OIL_RIGS':oil,'PERMIAN_RIGS':perm,'date':latest_dt.date().isoformat(),'source':url,'sheet':sheet}
+            if total and oil and perm:
+                return {'US_RIGS':total,'OIL_RIGS':oil,'PERMIAN_RIGS':perm,'date':latest_dt.date().isoformat(),'source':url,'sheet':sheet}
             errors.append(f'incomplete {url}: total={total} oil={oil} permian={perm}')
-        except Exception as e: errors.append(f'{url}: {e}')
+        except Exception as e:
+            errors.append(f'{url}: {e}')
     raise RuntimeError('; '.join(errors[-3:]) or 'Baker Hughes xlsx parse failed')
 
 def fetch_eia_steo():
     url='https://api.eia.gov/v2/steo/data/'
     params=[('api_key','DEMO_KEY'),('frequency','quarterly'),('data[0]','value'),('facets[seriesId][]','DUCSPM'),('facets[seriesId][]','NWCPM'),('facets[seriesId][]','RIGSPM'),('sort[0][column]','period'),('sort[0][direction]','desc'),('offset','0'),('length','24')]
-    r=requests.get(url,params=params,timeout=35,headers=UA); r.raise_for_status(); rows=r.json().get('response',{}).get('data',[])
+    r=requests.get(url,params=params,timeout=(8,40),headers=UA); r.raise_for_status(); rows=r.json().get('response',{}).get('data',[])
     if not rows: raise RuntimeError('EIA STEO returned no data')
     out={}; ids={'DUCSPM':'PERMIAN_DUC','NWCPM':'PERMIAN_COMPLETIONS_Q','RIGSPM':'PERMIAN_RIGS_Q'}
     for sid,key in ids.items():
@@ -147,7 +143,7 @@ def fetch_eia_steo():
     return out
 
 def discover_release(list_url, domain, needle):
-    html=requests.get(list_url,timeout=30,headers=UA).text
+    html=requests.get(list_url,timeout=(5,20),headers=UA).text
     cand=[]
     for h in re.findall(r'href=["\']([^"\']+)["\']',html,re.I):
         u=urljoin(domain,h)
@@ -157,14 +153,14 @@ def discover_release(list_url, domain, needle):
 def fetch_hp_metrics():
     try: url=discover_release('https://ir.hpinc.com/news/press-releases/default.aspx','https://ir.hpinc.com/','results')
     except Exception: url='https://ir.hpinc.com/news/press-releases/news-details/2026/Helmerich--Payne-Inc--Announces-Fiscal-Third-Quarter-Results/default.aspx'
-    text=clean_text(requests.get(url,timeout=30,headers=UA).text)
+    text=clean_text(requests.get(url,timeout=(5,25),headers=UA).text)
     m=re.search(r'direct margins? averaged\s*\$?([0-9,]+)\s*with\s*([0-9,]+)\s*rigs?\s+active',text,re.I) or re.search(r'per[- ]day basis direct margins? averaged\s*\$?([0-9,]+).*?with\s*([0-9,]+)\s*rigs?\s+active',text,re.I)
     if not m: raise RuntimeError('HP margin/day + active rigs not found')
     return {'HP_MARGIN_DAY':int(m.group(1).replace(',','')),'HP_ACTIVE_RIGS':int(m.group(2).replace(',','')),'source':url}
 def fetch_pten_metrics():
     try: url=discover_release('https://investor.patenergy.com/Investors/News-and-Events/news/default.aspx','https://investor.patenergy.com/','financial-results')
     except Exception: url='https://investor.patenergy.com/Investors/News-and-Events/news/news-details/2026/Patterson-UTI-Energy-Reports-Financial-Results-for-the-Quarter-Ended-June-30-2026-/default.aspx'
-    text=clean_text(requests.get(url,timeout=30,headers=UA).text)
+    text=clean_text(requests.get(url,timeout=(5,25),headers=UA).text)
     m=re.search(r'Completion Services revenue totaled\s*\$?([0-9,.]+)\s*million,?\s*with adjusted gross profit of\s*\$?([0-9,.]+)\s*million',text,re.I) or re.search(r'Completion Services.*?Adjusted gross profit[^$]{0,60}\$\s*([0-9,]+)',text,re.I)
     if not m: raise RuntimeError('PTEN completion GP not found')
     gp=float(m.group(2).replace(',','')) if len(m.groups())>1 and m.group(2) else round(float(m.group(1).replace(',',''))/1000,1)
@@ -182,7 +178,6 @@ def hist_change(rows,key,days):
 def merge_today(rows,snap):
     by={r['date']:dict(r) for r in rows if r.get('date')}; by.setdefault(snap['date'],{'date':snap['date']}).update(snap)
     return [by[d] for d in sorted(by)]
-
 def status_source(sources,key,status,date=None,url=None,error=None):
     sources[key]={'status':status,'date':date,'url':url,'error':str(error)[:220] if error else None}
 
@@ -199,7 +194,7 @@ def shale_cycle(cfg,hist_rows,live,sources):
 
 def update():
     d=load(DATA); c=load(CONFIG); hist=load(HISTORY,{'snapshots':[]}); rows=hist.setdefault('snapshots',[]); errs=[]; live={}; sources={}
-    d.setdefault('meta',{})['version']='v5.5'
+    d.setdefault('meta',{})['version']='v5.6'
     for key,ticker in {'WTI':'CL=F','BRENT':'BZ=F','USDKRW':'KRW=X'}.items():
         try:
             cur,w,m=latest(ticker); d['market'][key].update(value=round(cur,2),change_1w=w,change_1m=m,score=oil_score(cur) if key!='USDKRW' else fx_score(cur),manual=False,source='Yahoo Finance')
@@ -215,13 +210,12 @@ def update():
         for key in ['US_RIGS','OIL_RIGS']:
             old=d['market'][key].get('value') or bh[key]; cur=bh[key]
             d['market'][key].update(value=cur,change_1w=cur-int(old),manual=False,source='Baker Hughes',source_date=bh['date'])
-        live['PERMIAN_RIGS']=bh['PERMIAN_RIGS']; live['PERMIAN_RIGS_SOURCE']='Baker Hughes'; live['PERMIAN_RIGS_DATE']=bh['date']
+        live['PERMIAN_RIGS']=bh['PERMIAN_RIGS']
     except Exception as e: errs.append(f'Baker Hughes auto: {e}'); status_source(sources,'Baker Hughes','STALE/FALLBACK',error=e)
     try:
         eia=fetch_eia_steo(); live.update({k:v for k,v in eia.items() if k.startswith('PERMIAN_')}); status_source(sources,'EIA STEO','AUTO',eia.get('PERMIAN_DUC_PERIOD'),eia['source'])
         if live.get('PERMIAN_RIGS') in (None,'') and eia.get('PERMIAN_RIGS_Q') is not None:
-            live['PERMIAN_RIGS']=round(eia['PERMIAN_RIGS_Q']); live['PERMIAN_RIGS_SOURCE']='EIA STEO quarterly fallback'; live['PERMIAN_RIGS_DATE']=eia.get('PERMIAN_RIGS_Q_PERIOD')
-            sources['Permian Rigs Fallback']={'status':'AUTO','date':eia.get('PERMIAN_RIGS_Q_PERIOD'),'url':eia['source'],'error':None}
+            live['PERMIAN_RIGS']=round(eia['PERMIAN_RIGS_Q']); sources['Permian Rigs Fallback']={'status':'AUTO','date':eia.get('PERMIAN_RIGS_Q_PERIOD'),'url':eia['source'],'error':None}
     except Exception as e: errs.append(f'EIA STEO auto: {e}'); status_source(sources,'EIA STEO','STALE/FALLBACK',error=e)
     try: hp=fetch_hp_metrics(); live.update(hp); status_source(sources,'HP IR','AUTO',url=hp['source'])
     except Exception as e: errs.append(f'HP IR auto: {e}'); status_source(sources,'HP IR','STALE/FALLBACK',error=e)
@@ -232,8 +226,7 @@ def update():
         hrc,hd,hu=fetch_steelbenchmarker_hrc(); d['market']['US_HRC'].update(value=hrc,score=hrc_cost_score(hrc),manual=False,source='SteelBenchmarker',source_date=hd,source_url=hu); status_source(sources,'SteelBenchmarker HRC','AUTO',hd,hu)
     except Exception as e:
         hrc=float(mi['US_HRC']); d['market']['US_HRC'].update(value=hrc,score=hrc_cost_score(hrc),manual=True,source='config.json fallback',source_date=None); errs.append(f'HRC auto: {e}'); status_source(sources,'SteelBenchmarker HRC','STALE/FALLBACK',error=e)
-    octg=float(mi['US_OCTG']); d['market']['US_OCTG'].update(value=octg,manual=True,source='config.json/manual')
-    status_source(sources,'US OCTG','MANUAL',url='config.json')
+    octg=float(mi['US_OCTG']); d['market']['US_OCTG'].update(value=octg,manual=True,source='config.json/manual'); status_source(sources,'US OCTG','MANUAL',url='config.json')
     spread=octg-hrc; d['market']['OCTG_HRC_SPREAD']['value']=round(spread,2); d['market']['OCTG_HRC_SPREAD']['score']=int(clamp(45+spread/25))
     octg_spread=round((d['market']['US_OCTG']['score']+d['market']['OCTG_HRC_SPREAD']['score'])/2); rig=round((d['market']['US_RIGS']['score']+d['market']['OIL_RIGS']['score'])/2); oil=round((d['market']['WTI']['score']+d['market']['BRENT']['score'])/2)
     comp={'OCTG/Spread':{'weight':35,'score':octg_spread},'Rig Count':{'weight':20,'score':rig},'Oil':{'weight':10,'score':oil},'HRC Cost':{'weight':10,'score':d['market']['US_HRC']['score']},'Export':{'weight':10,'score':int(mi['EXPORT_SCORE'])},'US Policy':{'weight':10,'score':int(mi['US_POLICY_SCORE'])},'FX':{'weight':5,'score':d['market']['USDKRW']['score']}}
@@ -248,7 +241,7 @@ def update():
         ch=hist_change(hist['snapshots'],key,28)
         if ch is not None and key in d['market']: d['market'][key]['change_1m']=ch
     recent=[r for r in hist['snapshots'] if r.get('PIPE_SCORE') is not None][-13:]; d['history']={'pipe_score':[r['PIPE_SCORE'] for r in recent],'labels':[r['date'][5:] for r in recent]}
-    d['meta'].update(last_updated=datetime.now(SEOUL).isoformat(timespec='seconds'),mode='v5.5 automated public shale metrics with Permian Rig fallback/status',errors=errs,source_status=sources)
+    d['meta'].update(last_updated=datetime.now(SEOUL).isoformat(timespec='seconds'),mode='v5.6 direct Baker Hughes report URL + resilient fallback/status',errors=errs,source_status=sources)
     save(HISTORY,hist); save(DATA,d)
     print('UPDATED',d['meta']['last_updated'],'pipe',total,'shale',shale['score'],'permian_rigs',shale['PERMIAN_RIGS'],'errors',len(errs))
     if errs: print('ERRORS:', ' | '.join(errs[:5]))
