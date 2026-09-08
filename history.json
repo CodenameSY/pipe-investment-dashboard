@@ -1,3 +1,22 @@
 {
-  "snapshots": []
+  "snapshots": [
+    {"date":"2026-05-31","US_OCTG":2063.0,"history_source":"GMK/Kallanish monthly OCTG, converted from $/metric tonne to $/short ton"},
+    {"date":"2026-06-05","OIL_RIGS":431,"history_source":"Baker Hughes via Pipe Exchange"},
+    {"date":"2026-06-12","OIL_RIGS":433,"history_source":"Baker Hughes via Pipe Exchange"},
+    {"date":"2026-06-19","OIL_RIGS":433,"history_source":"Baker Hughes via Pipe Exchange"},
+    {"date":"2026-06-24","US_HRC":1095.88,"OCTG_HRC_SPREAD":1228.22,"history_source":"SteelBenchmarker HRC + June OCTG public quote; values normalized to $/short ton"},
+    {"date":"2026-06-26","OIL_RIGS":440,"history_source":"Baker Hughes via Pipe Exchange"},
+    {"date":"2026-06-30","US_OCTG":2324.1,"history_source":"GMK/Kallanish monthly OCTG, converted from $/metric tonne to $/short ton"},
+    {"date":"2026-07-02","OIL_RIGS":445,"history_source":"Baker Hughes via Pipe Exchange"},
+    {"date":"2026-07-10","OIL_RIGS":445,"history_source":"Baker Hughes via Pipe Exchange"},
+    {"date":"2026-07-17","OIL_RIGS":452,"history_source":"Baker Hughes via Pipe Exchange"},
+    {"date":"2026-07-24","OIL_RIGS":450,"history_source":"Baker Hughes via Pipe Exchange"},
+    {"date":"2026-07-31","OIL_RIGS":451,"US_OCTG":2324.1,"history_source":"Baker Hughes + GMK/Kallanish monthly OCTG"},
+    {"date":"2026-08-07","OIL_RIGS":454,"history_source":"Baker Hughes via Pipe Exchange"},
+    {"date":"2026-08-12","US_HRC":1146.68,"history_source":"SteelBenchmarker, converted from $/metric tonne to $/short ton"},
+    {"date":"2026-08-14","OIL_RIGS":455,"history_source":"Baker Hughes via Pipe Exchange"},
+    {"date":"2026-08-21","OIL_RIGS":452,"history_source":"Baker Hughes via Pipe Exchange"},
+    {"date":"2026-08-28","OIL_RIGS":447,"history_source":"Baker Hughes via Pipe Exchange"},
+    {"date":"2026-09-04","OIL_RIGS":449,"history_source":"Baker Hughes via Pipe Exchange"}
+  ]
 }
