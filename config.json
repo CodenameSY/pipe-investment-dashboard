@@ -1,0 +1,13 @@
+{
+  "manual_inputs": {
+    "US_HRC": 1100,
+    "US_OCTG": 2325,
+    "EXPORT_SCORE": 68,
+    "US_POLICY_SCORE": 58
+  },
+  "tickers": {
+    "세아제강": "306200.KS",
+    "넥스틸": "092790.KS",
+    "휴스틸": "005010.KS"
+  }
+}

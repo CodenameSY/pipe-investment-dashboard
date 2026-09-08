@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "version": "v3",
+    "last_updated": "2026-09-08T11:46:00+09:00",
+    "mode": "sample/fallback",
+    "errors": []
+  },
+  "market": {
+    "WTI": {
+      "value": 68.0,
+      "unit": "$/bbl",
+      "change_1w": 1.8,
+      "change_1m": 4.2,
+      "score": 66
+    },
+    "BRENT": {
+      "value": 72.0,
+      "unit": "$/bbl",
+      "change_1w": 1.4,
+      "change_1m": 3.6,
+      "score": 67
+    },
+    "USDKRW": {
+      "value": 1340.0,
+      "unit": "KRW",
+      "change_1w": -0.7,
+      "change_1m": -2.1,
+      "score": 61
+    },
+    "US_RIGS": {
+      "value": 588,
+      "unit": "rigs",
+      "change_1w": 4,
+      "change_4w": 11,
+      "score": 76
+    },
+    "OIL_RIGS": {
+      "value": 431,
+      "unit": "rigs",
+      "change_1w": 3,
+      "change_4w": 9,
+      "score": 78
+    },
+    "US_HRC": {
+      "value": 1100,
+      "unit": "$/st",
+      "change_1m": 4.3,
+      "score": 70,
+      "manual": true
+    },
+    "US_OCTG": {
+      "value": 2325,
+      "unit": "$/st",
+      "change_1m": 12.7,
+      "score": 90,
+      "manual": true
+    },
+    "OCTG_HRC_SPREAD": {
+      "value": 1225,
+      "unit": "$/st",
+      "change_1m": 20.0,
+      "score": 92,
+      "derived": true
+    }
+  },
+  "stocks": {
+    "세아제강": {
+      "ticker": "306200.KS",
+      "price": null,
+      "change_1w": null,
+      "change_1m": null
+    },
+    "넥스틸": {
+      "ticker": "092790.KS",
+      "price": null,
+      "change_1w": null,
+      "change_1m": null
+    },
+    "휴스틸": {
+      "ticker": "005010.KS",
+      "price": null,
+      "change_1w": null,
+      "change_1m": null
+    }
+  },
+  "score": {
+    "pipe_cycle": 77,
+    "trend": "BULLISH · IMPROVING",
+    "components": {
+      "OCTG/Spread": {
+        "weight": 35,
+        "score": 91
+      },
+      "Rig Count": {
+        "weight": 20,
+        "score": 77
+      },
+      "Oil": {
+        "weight": 10,
+        "score": 67
+      },
+      "HRC Cost": {
+        "weight": 10,
+        "score": 70
+      },
+      "Export": {
+        "weight": 10,
+        "score": 68
+      },
+      "US Policy": {
+        "weight": 10,
+        "score": 58
+      },
+      "FX": {
+        "weight": 5,
+        "score": 61
+      }
+    }
+  },
+  "history": {
+    "pipe_score": [
+      59,
+      62,
+      65,
+      68,
+      72,
+      74,
+      77
+    ],
+    "labels": [
+      "6W",
+      "5W",
+      "4W",
+      "3W",
+      "2W",
+      "1W",
+      "NOW"
+    ]
+  }
+}
