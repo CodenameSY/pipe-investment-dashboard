@@ -44,7 +44,7 @@ jobs:
         run: |
           git config user.name "pipe-dashboard-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data.json
+          git add data.json history.json
           git diff --cached --quiet || git commit -m "Auto update dashboard data"
           git push
 
@@ -53,6 +53,7 @@ jobs:
           mkdir -p _site
           cp index.html _site/index.html
           cp data.json _site/data.json
+          cp history.json _site/history.json
           touch _site/.nojekyll
 
       - name: Setup Pages
