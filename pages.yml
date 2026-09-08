@@ -1,0 +1,68 @@
+name: Update data and deploy dashboard
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '10 22 * * 1-5'   # Weekdays 07:10 KST
+    - cron: '30 13 * * 6'     # Saturday 22:30 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Update dashboard data
+        run: python update_data.py
+
+      - name: Save scheduled/manual data refresh
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "pipe-dashboard-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data.json
+          git diff --cached --quiet || git commit -m "Auto update dashboard data"
+          git push
+
+      - name: Prepare Pages files
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+          cp data.json _site/data.json
+          touch _site/.nojekyll
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
