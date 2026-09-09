@@ -1,22 +1,523 @@
 {
   "snapshots": [
-    {"date":"2026-05-31","US_OCTG":2063.0,"history_source":"GMK/Kallanish monthly OCTG, converted from $/metric tonne to $/short ton"},
-    {"date":"2026-06-05","OIL_RIGS":431,"history_source":"Baker Hughes via Pipe Exchange"},
-    {"date":"2026-06-12","OIL_RIGS":433,"history_source":"Baker Hughes via Pipe Exchange"},
-    {"date":"2026-06-19","OIL_RIGS":433,"history_source":"Baker Hughes via Pipe Exchange"},
-    {"date":"2026-06-24","US_HRC":1095.88,"OCTG_HRC_SPREAD":1228.22,"history_source":"SteelBenchmarker HRC + June OCTG public quote; values normalized to $/short ton"},
-    {"date":"2026-06-26","OIL_RIGS":440,"history_source":"Baker Hughes via Pipe Exchange"},
-    {"date":"2026-06-30","US_OCTG":2324.1,"PERMIAN_DUC":799,"PERMIAN_COMPLETIONS_Q":1397,"PERMIAN_MONTHLY_COMPLETIONS":465.67,"DUC_COVER":1.72,"PERMIAN_RIGS":248,"history_source":"EIA STEO Q2 2026 Permian backfill + GMK/Kallanish monthly OCTG"},
-    {"date":"2026-07-02","OIL_RIGS":445,"PERMIAN_DUC":799,"PERMIAN_COMPLETIONS_Q":1397,"PERMIAN_MONTHLY_COMPLETIONS":465.67,"DUC_COVER":1.72,"PERMIAN_RIGS":248,"history_source":"Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity"},
-    {"date":"2026-07-10","OIL_RIGS":445,"PERMIAN_DUC":799,"PERMIAN_COMPLETIONS_Q":1397,"PERMIAN_MONTHLY_COMPLETIONS":465.67,"DUC_COVER":1.72,"PERMIAN_RIGS":248,"history_source":"Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity"},
-    {"date":"2026-07-17","OIL_RIGS":452,"PERMIAN_DUC":799,"PERMIAN_COMPLETIONS_Q":1397,"PERMIAN_MONTHLY_COMPLETIONS":465.67,"DUC_COVER":1.72,"PERMIAN_RIGS":248,"history_source":"Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity"},
-    {"date":"2026-07-24","OIL_RIGS":450,"PERMIAN_DUC":799,"PERMIAN_COMPLETIONS_Q":1397,"PERMIAN_MONTHLY_COMPLETIONS":465.67,"DUC_COVER":1.72,"PERMIAN_RIGS":248,"history_source":"Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity"},
-    {"date":"2026-07-31","OIL_RIGS":451,"US_OCTG":2324.1,"PERMIAN_DUC":799,"PERMIAN_COMPLETIONS_Q":1397,"PERMIAN_MONTHLY_COMPLETIONS":465.67,"DUC_COVER":1.72,"PERMIAN_RIGS":248,"history_source":"Baker Hughes + GMK/Kallanish monthly OCTG; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity"},
-    {"date":"2026-08-07","OIL_RIGS":454,"PERMIAN_DUC":799,"PERMIAN_COMPLETIONS_Q":1397,"PERMIAN_MONTHLY_COMPLETIONS":465.67,"DUC_COVER":1.72,"PERMIAN_RIGS":248,"history_source":"Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity"},
-    {"date":"2026-08-12","US_HRC":1146.68,"PERMIAN_DUC":799,"PERMIAN_COMPLETIONS_Q":1397,"PERMIAN_MONTHLY_COMPLETIONS":465.67,"DUC_COVER":1.72,"PERMIAN_RIGS":248,"history_source":"SteelBenchmarker, converted from $/metric tonne to $/short ton; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity"},
-    {"date":"2026-08-14","OIL_RIGS":455,"PERMIAN_DUC":799,"PERMIAN_COMPLETIONS_Q":1397,"PERMIAN_MONTHLY_COMPLETIONS":465.67,"DUC_COVER":1.72,"PERMIAN_RIGS":248,"history_source":"Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity"},
-    {"date":"2026-08-21","OIL_RIGS":452,"PERMIAN_DUC":799,"PERMIAN_COMPLETIONS_Q":1397,"PERMIAN_MONTHLY_COMPLETIONS":465.67,"DUC_COVER":1.72,"PERMIAN_RIGS":248,"history_source":"Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity"},
-    {"date":"2026-08-28","OIL_RIGS":447,"PERMIAN_DUC":799,"PERMIAN_COMPLETIONS_Q":1397,"PERMIAN_MONTHLY_COMPLETIONS":465.67,"DUC_COVER":1.72,"PERMIAN_RIGS":248,"history_source":"Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity"},
-    {"date":"2026-09-04","OIL_RIGS":449,"PERMIAN_DUC":799,"PERMIAN_COMPLETIONS_Q":1397,"PERMIAN_MONTHLY_COMPLETIONS":465.67,"DUC_COVER":1.72,"PERMIAN_RIGS":248,"history_source":"Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity"}
+    {
+      "date": "2026-05-31",
+      "US_OCTG": 2063.0,
+      "history_source": "GMK/Kallanish monthly OCTG, converted from $/metric tonne to $/short ton"
+    },
+    {
+      "date": "2026-06-05",
+      "OIL_RIGS": 431,
+      "history_source": "Baker Hughes via Pipe Exchange"
+    },
+    {
+      "date": "2026-06-08",
+      "WTI": 91.3,
+      "BRENT": 94.25
+    },
+    {
+      "date": "2026-06-09",
+      "WTI": 88.2,
+      "BRENT": 91.45,
+      "USDKRW": 1528.88
+    },
+    {
+      "date": "2026-06-10",
+      "WTI": 90.03,
+      "BRENT": 93.1,
+      "USDKRW": 1525.8101
+    },
+    {
+      "date": "2026-06-11",
+      "WTI": 87.71,
+      "BRENT": 90.38,
+      "USDKRW": 1525.05
+    },
+    {
+      "date": "2026-06-12",
+      "OIL_RIGS": 433,
+      "history_source": "Baker Hughes via Pipe Exchange",
+      "WTI": 84.88,
+      "BRENT": 87.33,
+      "USDKRW": 1517.38
+    },
+    {
+      "date": "2026-06-15",
+      "WTI": 80.75,
+      "BRENT": 83.17,
+      "USDKRW": 1509.5
+    },
+    {
+      "date": "2026-06-16",
+      "WTI": 76.05,
+      "BRENT": 78.96,
+      "USDKRW": 1513.3101
+    },
+    {
+      "date": "2026-06-17",
+      "WTI": 76.79,
+      "BRENT": 79.55,
+      "USDKRW": 1510.96
+    },
+    {
+      "date": "2026-06-18",
+      "WTI": 76.6,
+      "BRENT": 79.85,
+      "USDKRW": 1525.42
+    },
+    {
+      "date": "2026-06-19",
+      "OIL_RIGS": 433,
+      "history_source": "Baker Hughes via Pipe Exchange",
+      "USDKRW": 1537.5601
+    },
+    {
+      "date": "2026-06-22",
+      "WTI": 74.82,
+      "BRENT": 77.9,
+      "USDKRW": 1531.33
+    },
+    {
+      "date": "2026-06-23",
+      "WTI": 73.21,
+      "BRENT": 77.08,
+      "USDKRW": 1539.05
+    },
+    {
+      "date": "2026-06-24",
+      "US_HRC": 1095.88,
+      "OCTG_HRC_SPREAD": 1228.22,
+      "history_source": "SteelBenchmarker HRC + June OCTG public quote; values normalized to $/short ton",
+      "WTI": 70.34,
+      "BRENT": 73.74,
+      "USDKRW": 1535.25
+    },
+    {
+      "date": "2026-06-25",
+      "WTI": 71.92,
+      "BRENT": 75.26,
+      "USDKRW": 1542.76
+    },
+    {
+      "date": "2026-06-26",
+      "OIL_RIGS": 440,
+      "history_source": "Baker Hughes via Pipe Exchange",
+      "WTI": 69.23,
+      "BRENT": 71.99,
+      "USDKRW": 1546.48
+    },
+    {
+      "date": "2026-06-29",
+      "WTI": 70.75,
+      "BRENT": 73.15,
+      "USDKRW": 1535.24
+    },
+    {
+      "date": "2026-06-30",
+      "US_OCTG": 2324.1,
+      "PERMIAN_DUC": 799,
+      "PERMIAN_COMPLETIONS_Q": 1397,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "DUC_COVER": 1.72,
+      "PERMIAN_RIGS": 248,
+      "history_source": "EIA STEO Q2 2026 Permian backfill + GMK/Kallanish monthly OCTG",
+      "WTI": 69.5,
+      "BRENT": 72.92,
+      "USDKRW": 1541.73
+    },
+    {
+      "date": "2026-07-01",
+      "WTI": 68.58,
+      "BRENT": 71.57,
+      "USDKRW": 1548.61
+    },
+    {
+      "date": "2026-07-02",
+      "OIL_RIGS": 445,
+      "PERMIAN_DUC": 799,
+      "PERMIAN_COMPLETIONS_Q": 1397,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "DUC_COVER": 1.72,
+      "PERMIAN_RIGS": 248,
+      "history_source": "Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity",
+      "WTI": 68.69,
+      "BRENT": 71.8,
+      "USDKRW": 1551.8101
+    },
+    {
+      "date": "2026-07-03",
+      "USDKRW": 1542.13
+    },
+    {
+      "date": "2026-07-06",
+      "WTI": 68.55,
+      "BRENT": 71.99,
+      "USDKRW": 1531.0
+    },
+    {
+      "date": "2026-07-07",
+      "WTI": 70.44,
+      "BRENT": 74.16,
+      "USDKRW": 1528.76
+    },
+    {
+      "date": "2026-07-08",
+      "WTI": 73.52,
+      "BRENT": 78.02,
+      "USDKRW": 1519.86
+    },
+    {
+      "date": "2026-07-09",
+      "WTI": 72.08,
+      "BRENT": 76.3,
+      "USDKRW": 1503.35
+    },
+    {
+      "date": "2026-07-10",
+      "OIL_RIGS": 445,
+      "PERMIAN_DUC": 799,
+      "PERMIAN_COMPLETIONS_Q": 1397,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "DUC_COVER": 1.72,
+      "PERMIAN_RIGS": 248,
+      "history_source": "Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity",
+      "WTI": 71.41,
+      "BRENT": 76.01,
+      "USDKRW": 1505.91
+    },
+    {
+      "date": "2026-07-13",
+      "WTI": 78.14,
+      "BRENT": 83.3,
+      "USDKRW": 1498.48
+    },
+    {
+      "date": "2026-07-14",
+      "WTI": 79.34,
+      "BRENT": 84.73,
+      "USDKRW": 1497.7
+    },
+    {
+      "date": "2026-07-15",
+      "WTI": 79.6,
+      "BRENT": 84.95,
+      "USDKRW": 1487.88
+    },
+    {
+      "date": "2026-07-16",
+      "WTI": 78.95,
+      "BRENT": 84.23,
+      "USDKRW": 1486.2
+    },
+    {
+      "date": "2026-07-17",
+      "OIL_RIGS": 452,
+      "PERMIAN_DUC": 799,
+      "PERMIAN_COMPLETIONS_Q": 1397,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "DUC_COVER": 1.72,
+      "PERMIAN_RIGS": 248,
+      "history_source": "Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity",
+      "WTI": 82.49,
+      "BRENT": 88.1,
+      "USDKRW": 1478.85
+    },
+    {
+      "date": "2026-07-20",
+      "WTI": 83.23,
+      "BRENT": 89.22,
+      "USDKRW": 1487.39
+    },
+    {
+      "date": "2026-07-21",
+      "WTI": 84.91,
+      "BRENT": 91.01,
+      "USDKRW": 1475.01
+    },
+    {
+      "date": "2026-07-22",
+      "WTI": 86.83,
+      "BRENT": 94.07,
+      "USDKRW": 1479.72
+    },
+    {
+      "date": "2026-07-23",
+      "WTI": 92.19,
+      "BRENT": 100.69,
+      "USDKRW": 1475.63
+    },
+    {
+      "date": "2026-07-24",
+      "OIL_RIGS": 450,
+      "PERMIAN_DUC": 799,
+      "PERMIAN_COMPLETIONS_Q": 1397,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "DUC_COVER": 1.72,
+      "PERMIAN_RIGS": 248,
+      "history_source": "Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity",
+      "WTI": 89.31,
+      "BRENT": 96.78,
+      "USDKRW": 1474.04
+    },
+    {
+      "date": "2026-07-27",
+      "WTI": 82.61,
+      "BRENT": 88.36,
+      "USDKRW": 1458.01
+    },
+    {
+      "date": "2026-07-28",
+      "WTI": 79.26,
+      "BRENT": 84.09,
+      "USDKRW": 1464.4399
+    },
+    {
+      "date": "2026-07-29",
+      "WTI": 84.46,
+      "BRENT": 90.74,
+      "USDKRW": 1453.16
+    },
+    {
+      "date": "2026-07-30",
+      "WTI": 83.59,
+      "BRENT": 89.03,
+      "USDKRW": 1442.28
+    },
+    {
+      "date": "2026-07-31",
+      "OIL_RIGS": 451,
+      "US_OCTG": 2324.1,
+      "PERMIAN_DUC": 799,
+      "PERMIAN_COMPLETIONS_Q": 1397,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "DUC_COVER": 1.72,
+      "PERMIAN_RIGS": 248,
+      "history_source": "Baker Hughes + GMK/Kallanish monthly OCTG; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity",
+      "WTI": 84.67,
+      "BRENT": 90.12,
+      "USDKRW": 1420.6
+    },
+    {
+      "date": "2026-08-03",
+      "WTI": 80.34,
+      "BRENT": 83.77,
+      "USDKRW": 1435.7
+    },
+    {
+      "date": "2026-08-04",
+      "WTI": 75.77,
+      "BRENT": 79.36,
+      "USDKRW": 1428.5
+    },
+    {
+      "date": "2026-08-05",
+      "WTI": 75.22,
+      "BRENT": 79.45,
+      "USDKRW": 1428.4301
+    },
+    {
+      "date": "2026-08-06",
+      "WTI": 77.29,
+      "BRENT": 82.49,
+      "USDKRW": 1421.16
+    },
+    {
+      "date": "2026-08-07",
+      "OIL_RIGS": 454,
+      "PERMIAN_DUC": 799,
+      "PERMIAN_COMPLETIONS_Q": 1397,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "DUC_COVER": 1.72,
+      "PERMIAN_RIGS": 248,
+      "history_source": "Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity",
+      "WTI": 78.18,
+      "BRENT": 83.55,
+      "USDKRW": 1422.3
+    },
+    {
+      "date": "2026-08-10",
+      "WTI": 82.13,
+      "BRENT": 87.72,
+      "USDKRW": 1407.0
+    },
+    {
+      "date": "2026-08-11",
+      "WTI": 83.2,
+      "BRENT": 88.91,
+      "USDKRW": 1417.3101
+    },
+    {
+      "date": "2026-08-12",
+      "US_HRC": 1146.68,
+      "PERMIAN_DUC": 799,
+      "PERMIAN_COMPLETIONS_Q": 1397,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "DUC_COVER": 1.72,
+      "PERMIAN_RIGS": 248,
+      "history_source": "SteelBenchmarker, converted from $/metric tonne to $/short ton; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity",
+      "WTI": 83.27,
+      "BRENT": 88.98,
+      "USDKRW": 1412.1801
+    },
+    {
+      "date": "2026-08-13",
+      "WTI": 81.25,
+      "BRENT": 87.07,
+      "USDKRW": 1416.46
+    },
+    {
+      "date": "2026-08-14",
+      "OIL_RIGS": 455,
+      "PERMIAN_DUC": 799,
+      "PERMIAN_COMPLETIONS_Q": 1397,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "DUC_COVER": 1.72,
+      "PERMIAN_RIGS": 248,
+      "history_source": "Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity",
+      "WTI": 82.4,
+      "BRENT": 88.52,
+      "USDKRW": 1416.85
+    },
+    {
+      "date": "2026-08-17",
+      "WTI": 84.5,
+      "BRENT": 90.87,
+      "USDKRW": 1415.37
+    },
+    {
+      "date": "2026-08-18",
+      "WTI": 84.94,
+      "BRENT": 91.02,
+      "USDKRW": 1414.73
+    },
+    {
+      "date": "2026-08-19",
+      "WTI": 85.83,
+      "BRENT": 91.62,
+      "USDKRW": 1413.58
+    },
+    {
+      "date": "2026-08-20",
+      "WTI": 87.83,
+      "BRENT": 93.78,
+      "USDKRW": 1389.4
+    },
+    {
+      "date": "2026-08-21",
+      "OIL_RIGS": 452,
+      "PERMIAN_DUC": 799,
+      "PERMIAN_COMPLETIONS_Q": 1397,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "DUC_COVER": 1.72,
+      "PERMIAN_RIGS": 248,
+      "history_source": "Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity",
+      "WTI": 87.06,
+      "BRENT": 94.39,
+      "USDKRW": 1390.79
+    },
+    {
+      "date": "2026-08-24",
+      "WTI": 85.01,
+      "BRENT": 92.17,
+      "USDKRW": 1384.98
+    },
+    {
+      "date": "2026-08-25",
+      "WTI": 82.36,
+      "BRENT": 88.58,
+      "USDKRW": 1380.76
+    },
+    {
+      "date": "2026-08-26",
+      "WTI": 82.23,
+      "BRENT": 87.84,
+      "USDKRW": 1381.49
+    },
+    {
+      "date": "2026-08-27",
+      "WTI": 83.53,
+      "BRENT": 89.7,
+      "USDKRW": 1383.49
+    },
+    {
+      "date": "2026-08-28",
+      "OIL_RIGS": 447,
+      "PERMIAN_DUC": 799,
+      "PERMIAN_COMPLETIONS_Q": 1397,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "DUC_COVER": 1.72,
+      "PERMIAN_RIGS": 248,
+      "history_source": "Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity",
+      "WTI": 83.4,
+      "BRENT": 89.31,
+      "USDKRW": 1380.45
+    },
+    {
+      "date": "2026-08-31",
+      "WTI": 85.76,
+      "BRENT": 90.49,
+      "USDKRW": 1377.11
+    },
+    {
+      "date": "2026-09-01",
+      "WTI": 90.22,
+      "BRENT": 94.65,
+      "USDKRW": 1366.62
+    },
+    {
+      "date": "2026-09-02",
+      "WTI": 91.01,
+      "BRENT": 95.63,
+      "USDKRW": 1372.86
+    },
+    {
+      "date": "2026-09-03",
+      "WTI": 91.3,
+      "BRENT": 95.52,
+      "USDKRW": 1358.39
+    },
+    {
+      "date": "2026-09-04",
+      "OIL_RIGS": 449,
+      "PERMIAN_DUC": 799,
+      "PERMIAN_COMPLETIONS_Q": 1397,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "DUC_COVER": 1.72,
+      "PERMIAN_RIGS": 248,
+      "history_source": "Baker Hughes via Pipe Exchange; EIA STEO Q2 2026 Permian values carried forward for 3M chart continuity",
+      "WTI": 91.48,
+      "BRENT": 96.28,
+      "USDKRW": 1355.41
+    },
+    {
+      "date": "2026-09-07",
+      "USDKRW": 1345.0601
+    },
+    {
+      "date": "2026-09-08",
+      "WTI": 94.63,
+      "BRENT": 99.6,
+      "USDKRW": 1343.5699
+    },
+    {
+      "date": "2026-09-09",
+      "USDKRW": 1337.58,
+      "PIPE_SCORE": 75,
+      "PERMIAN_DUC": 825.0,
+      "PERMIAN_COMPLETIONS_Q": 1397.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 465.67,
+      "PERMIAN_RIGS": 267,
+      "DUC_COVER": 1.77,
+      "HP_MARGIN_DAY": 18669,
+      "HP_ACTIVE_RIGS": 142,
+      "PTEN_COMPLETION_GP": 123.0,
+      "WTI": 94.63,
+      "BRENT": 99.6,
+      "US_RIGS": 588,
+      "OIL_RIGS": 449,
+      "US_HRC": 1165.0,
+      "US_OCTG": 2325.0,
+      "OCTG_HRC_SPREAD": 1160.0
+    }
   ]
 }

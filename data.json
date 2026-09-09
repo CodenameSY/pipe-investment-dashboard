@@ -1,95 +1,174 @@
 {
   "meta": {
-    "version": "v3",
-    "last_updated": "2026-09-08T11:46:00+09:00",
-    "mode": "sample/fallback",
-    "errors": []
+    "version": "v5.7",
+    "last_updated": "2026-09-09T09:07:55+09:00",
+    "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
+    "errors": [],
+    "source_status": {
+      "WTI": {
+        "status": "AUTO",
+        "date": "2026-09-09",
+        "url": "Yahoo Finance",
+        "error": null
+      },
+      "BRENT": {
+        "status": "AUTO",
+        "date": "2026-09-09",
+        "url": "Yahoo Finance",
+        "error": null
+      },
+      "USDKRW": {
+        "status": "AUTO",
+        "date": "2026-09-09",
+        "url": "Yahoo Finance",
+        "error": null
+      },
+      "Rig Count": {
+        "status": "AUTO",
+        "date": "2026-09-04",
+        "url": "https://www.aogr.com/web-exclusives/us-rig-count/2026",
+        "error": null
+      },
+      "Permian Rig Count": {
+        "status": "AUTO",
+        "date": "2026-08-28",
+        "url": "https://www.oilpriceapi.com/data/rig-count/permian",
+        "error": null
+      },
+      "EIA STEO": {
+        "status": "AUTO",
+        "date": "2026-Q2",
+        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=quarterly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&offset=0&length=24",
+        "error": null
+      },
+      "HP IR": {
+        "status": "AUTO",
+        "date": null,
+        "url": "https://ir.hpinc.com/news/press-releases/news-details/2026/Helmerich--Payne-Inc--Announces-Fiscal-Third-Quarter-Results/default.aspx",
+        "error": null
+      },
+      "PTEN IR": {
+        "status": "AUTO",
+        "date": null,
+        "url": "https://investor.patenergy.com/Investors/News-and-Events/news/news-details/2026/Patterson-UTI-Energy-Reports-Financial-Results-for-the-Quarter-Ended-June-30-2026-/default.aspx",
+        "error": null
+      },
+      "SteelBenchmarker HRC": {
+        "status": "AUTO",
+        "date": "August 26, 2026",
+        "url": "https://steelbenchmarker.com/history.pdf",
+        "error": null
+      },
+      "US OCTG": {
+        "status": "MANUAL",
+        "date": null,
+        "url": "config.json",
+        "error": null
+      }
+    }
   },
   "market": {
     "WTI": {
-      "value": 68.0,
+      "value": 94.63,
       "unit": "$/bbl",
-      "change_1w": 1.8,
-      "change_1m": 4.2,
-      "score": 66
+      "change_1w": 10.34,
+      "change_1m": 21.04,
+      "score": 65,
+      "manual": false,
+      "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 72.0,
+      "value": 99.6,
       "unit": "$/bbl",
-      "change_1w": 1.4,
-      "change_1m": 3.6,
-      "score": 67
+      "change_1w": 10.07,
+      "change_1m": 19.21,
+      "score": 65,
+      "manual": false,
+      "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1340.0,
+      "value": 1337.58,
       "unit": "KRW",
-      "change_1w": -0.7,
-      "change_1m": -2.1,
-      "score": 61
+      "change_1w": -2.57,
+      "change_1m": -5.63,
+      "score": 70,
+      "manual": false,
+      "source": "Yahoo Finance"
     },
     "US_RIGS": {
       "value": 588,
       "unit": "rigs",
-      "change_1w": 4,
+      "change_1w": 0,
       "change_4w": 11,
-      "score": 76
+      "score": 76,
+      "manual": false,
+      "source": "AOGR / Baker Hughes data",
+      "source_date": "2026-09-04"
     },
     "OIL_RIGS": {
-      "value": 431,
+      "value": 449,
       "unit": "rigs",
-      "change_1w": 3,
+      "change_1w": 18,
       "change_4w": 9,
-      "score": 78
+      "score": 78,
+      "manual": false,
+      "source": "AOGR / Baker Hughes data",
+      "source_date": "2026-09-04",
+      "change_1m": -1.1
     },
     "US_HRC": {
-      "value": 1100,
+      "value": 1165.0,
       "unit": "$/st",
-      "change_1m": 4.3,
-      "score": 70,
-      "manual": true
+      "change_1m": 1.6,
+      "score": 52,
+      "manual": false,
+      "source": "SteelBenchmarker",
+      "source_date": "August 26, 2026",
+      "source_url": "https://steelbenchmarker.com/history.pdf"
     },
     "US_OCTG": {
-      "value": 2325,
+      "value": 2325.0,
       "unit": "$/st",
-      "change_1m": 12.7,
+      "change_1m": 0.04,
       "score": 90,
-      "manual": true
+      "manual": true,
+      "source": "config.json/manual"
     },
     "OCTG_HRC_SPREAD": {
-      "value": 1225,
+      "value": 1160.0,
       "unit": "$/st",
-      "change_1m": 20.0,
-      "score": 92,
+      "change_1m": -5.55,
+      "score": 91,
       "derived": true
     }
   },
   "stocks": {
     "세아제강": {
       "ticker": "306200.KS",
-      "price": null,
-      "change_1w": null,
-      "change_1m": null
+      "price": 147300.0,
+      "change_1w": 5.52,
+      "change_1m": 11.59
     },
     "넥스틸": {
       "ticker": "092790.KS",
-      "price": null,
-      "change_1w": null,
-      "change_1m": null
+      "price": 13130.0,
+      "change_1w": 2.74,
+      "change_1m": 6.75
     },
     "휴스틸": {
       "ticker": "005010.KS",
-      "price": null,
-      "change_1w": null,
-      "change_1m": null
+      "price": 3865.0,
+      "change_1w": 3.07,
+      "change_1m": 6.47
     }
   },
   "score": {
-    "pipe_cycle": 77,
-    "trend": "BULLISH · IMPROVING",
+    "pipe_cycle": 75,
+    "trend": "BULLISH · FLAT",
     "components": {
       "OCTG/Spread": {
         "weight": 35,
-        "score": 91
+        "score": 90
       },
       "Rig Count": {
         "weight": 20,
@@ -97,11 +176,11 @@
       },
       "Oil": {
         "weight": 10,
-        "score": 67
+        "score": 65
       },
       "HRC Cost": {
         "weight": 10,
-        "score": 70
+        "score": 52
       },
       "Export": {
         "weight": 10,
@@ -113,28 +192,106 @@
       },
       "FX": {
         "weight": 5,
-        "score": 61
+        "score": 70
       }
     }
   },
   "history": {
     "pipe_score": [
-      59,
-      62,
-      65,
-      68,
-      72,
-      74,
-      77
+      75
     ],
     "labels": [
-      "6W",
-      "5W",
-      "4W",
-      "3W",
-      "2W",
-      "1W",
-      "NOW"
+      "09-09"
     ]
+  },
+  "shale_cycle": {
+    "signal": "SHALE CYCLE CONFIRMED",
+    "score": 81,
+    "PERMIAN_DUC": 825.0,
+    "PERMIAN_COMPLETIONS": 465.67,
+    "PERMIAN_COMPLETIONS_Q": 1397.0,
+    "DUC_COVER": 1.77,
+    "DUC_CHANGE": 3.25,
+    "PERMIAN_RIGS": 267,
+    "FRAC_SPREAD": null,
+    "HP_ACTIVE_RIGS": 142,
+    "HP_SUPERSPEC_UTIL": 95,
+    "HP_MARGIN_DAY": 18669,
+    "PTEN_DRILLING_RIGS": 100,
+    "PTEN_COMPLETION_GP": 123.0,
+    "PTEN_COMPLETION_PRICING": "IMPROVING",
+    "components": {
+      "DUC Pressure": 80,
+      "HP Rig Tightness": 85,
+      "HP Pricing": 80,
+      "PTEN Completion": 80
+    },
+    "sources": {
+      "WTI": {
+        "status": "AUTO",
+        "date": "2026-09-09",
+        "url": "Yahoo Finance",
+        "error": null
+      },
+      "BRENT": {
+        "status": "AUTO",
+        "date": "2026-09-09",
+        "url": "Yahoo Finance",
+        "error": null
+      },
+      "USDKRW": {
+        "status": "AUTO",
+        "date": "2026-09-09",
+        "url": "Yahoo Finance",
+        "error": null
+      },
+      "Rig Count": {
+        "status": "AUTO",
+        "date": "2026-09-04",
+        "url": "https://www.aogr.com/web-exclusives/us-rig-count/2026",
+        "error": null
+      },
+      "Permian Rig Count": {
+        "status": "AUTO",
+        "date": "2026-08-28",
+        "url": "https://www.oilpriceapi.com/data/rig-count/permian",
+        "error": null
+      },
+      "EIA STEO": {
+        "status": "AUTO",
+        "date": "2026-Q2",
+        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=quarterly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&offset=0&length=24",
+        "error": null
+      },
+      "HP IR": {
+        "status": "AUTO",
+        "date": null,
+        "url": "https://ir.hpinc.com/news/press-releases/news-details/2026/Helmerich--Payne-Inc--Announces-Fiscal-Third-Quarter-Results/default.aspx",
+        "error": null
+      },
+      "PTEN IR": {
+        "status": "AUTO",
+        "date": null,
+        "url": "https://investor.patenergy.com/Investors/News-and-Events/news/news-details/2026/Patterson-UTI-Energy-Reports-Financial-Results-for-the-Quarter-Ended-June-30-2026-/default.aspx",
+        "error": null
+      },
+      "SteelBenchmarker HRC": {
+        "status": "AUTO",
+        "date": "August 26, 2026",
+        "url": "https://steelbenchmarker.com/history.pdf",
+        "error": null
+      },
+      "US OCTG": {
+        "status": "MANUAL",
+        "date": null,
+        "url": "config.json",
+        "error": null
+      }
+    },
+    "as_of": {
+      "PERMIAN_DUC": "2026-Q2 EIA STEO vintage",
+      "HP": "FY2026 Q3",
+      "PTEN": "2026 Q3 guidance / 2026 Q2 commentary"
+    }
   }
 }
