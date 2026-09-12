@@ -1,25 +1,25 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-09-12T09:12:17+09:00",
+    "last_updated": "2026-09-13T01:24:26+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-09-12",
+        "date": "2026-09-13",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-09-12",
+        "date": "2026-09-13",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-09-12",
+        "date": "2026-09-13",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -31,7 +31,7 @@
       },
       "Permian Rig Count": {
         "status": "AUTO",
-        "date": "2026-08-28",
+        "date": "2026-09-12",
         "url": "https://www.oilpriceapi.com/data/rig-count/permian",
         "error": null
       },
@@ -69,19 +69,19 @@
   },
   "market": {
     "WTI": {
-      "value": 99.99,
+      "value": 100.05,
       "unit": "$/bbl",
-      "change_1w": 9.52,
-      "change_1m": 20.08,
+      "change_1w": 9.58,
+      "change_1m": 20.15,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 104.42,
+      "value": 104.61,
       "unit": "$/bbl",
-      "change_1w": 9.32,
-      "change_1m": 17.35,
+      "change_1w": 9.52,
+      "change_1m": 17.57,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
@@ -89,8 +89,8 @@
     "USDKRW": {
       "value": 1341.05,
       "unit": "KRW",
-      "change_1w": -1.06,
-      "change_1m": -5.32,
+      "change_1w": -0.3,
+      "change_1m": -5.35,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
@@ -98,7 +98,7 @@
     "US_RIGS": {
       "value": 591,
       "unit": "rigs",
-      "change_1w": 3,
+      "change_1w": 0,
       "change_4w": 11,
       "score": 76,
       "manual": false,
@@ -108,7 +108,7 @@
     "OIL_RIGS": {
       "value": 450,
       "unit": "rigs",
-      "change_1w": 1,
+      "change_1w": 0,
       "change_4w": 9,
       "score": 78,
       "manual": false,
@@ -201,13 +201,15 @@
       75,
       75,
       75,
+      75,
       75
     ],
     "labels": [
       "09-09",
       "09-10",
       "09-11",
-      "09-12"
+      "09-12",
+      "09-13"
     ]
   },
   "shale_cycle": {
@@ -235,19 +237,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-09-12",
+        "date": "2026-09-13",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-09-12",
+        "date": "2026-09-13",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-09-12",
+        "date": "2026-09-13",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -259,7 +261,7 @@
       },
       "Permian Rig Count": {
         "status": "AUTO",
-        "date": "2026-08-28",
+        "date": "2026-09-12",
         "url": "https://www.oilpriceapi.com/data/rig-count/permian",
         "error": null
       },
