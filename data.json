@@ -1,31 +1,31 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-09-11T09:04:06+09:00",
+    "last_updated": "2026-09-12T09:12:17+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-09-11",
+        "date": "2026-09-12",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-09-11",
+        "date": "2026-09-12",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-09-11",
+        "date": "2026-09-12",
         "url": "Yahoo Finance",
         "error": null
       },
       "Rig Count": {
         "status": "AUTO",
-        "date": "2026-09-04",
+        "date": "2026-09-11",
         "url": "https://www.aogr.com/web-exclusives/us-rig-count/2026",
         "error": null
       },
@@ -69,52 +69,52 @@
   },
   "market": {
     "WTI": {
-      "value": 104.26,
+      "value": 99.99,
       "unit": "$/bbl",
-      "change_1w": 14.56,
-      "change_1m": 25.31,
+      "change_1w": 9.52,
+      "change_1m": 20.08,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 109.88,
+      "value": 104.42,
       "unit": "$/bbl",
-      "change_1w": 14.9,
-      "change_1m": 23.59,
+      "change_1w": 9.32,
+      "change_1m": 17.35,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1346.88,
+      "value": 1341.05,
       "unit": "KRW",
-      "change_1w": -0.63,
-      "change_1m": -4.91,
+      "change_1w": -1.06,
+      "change_1m": -5.32,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "US_RIGS": {
-      "value": 588,
+      "value": 591,
       "unit": "rigs",
-      "change_1w": 0,
+      "change_1w": 3,
       "change_4w": 11,
       "score": 76,
       "manual": false,
       "source": "AOGR / Baker Hughes data",
-      "source_date": "2026-09-04"
+      "source_date": "2026-09-11"
     },
     "OIL_RIGS": {
-      "value": 449,
+      "value": 450,
       "unit": "rigs",
-      "change_1w": 0,
+      "change_1w": 1,
       "change_4w": 9,
       "score": 78,
       "manual": false,
       "source": "AOGR / Baker Hughes data",
-      "source_date": "2026-09-04",
-      "change_1m": -1.32
+      "source_date": "2026-09-11",
+      "change_1m": -1.1
     },
     "US_HRC": {
       "value": 1165.0,
@@ -145,21 +145,21 @@
   "stocks": {
     "세아제강": {
       "ticker": "306200.KS",
-      "price": 147900.0,
-      "change_1w": 0.27,
-      "change_1m": 6.94
+      "price": 150600.0,
+      "change_1w": 4.08,
+      "change_1m": 12.22
     },
     "넥스틸": {
       "ticker": "092790.KS",
-      "price": 14370.0,
-      "change_1w": 10.62,
-      "change_1m": 8.45
+      "price": 14380.0,
+      "change_1w": 10.7,
+      "change_1m": 10.96
     },
     "휴스틸": {
       "ticker": "005010.KS",
-      "price": 4085.0,
-      "change_1w": 7.78,
-      "change_1m": 3.03
+      "price": 4000.0,
+      "change_1w": 4.44,
+      "change_1m": 2.3
     }
   },
   "score": {
@@ -200,12 +200,14 @@
     "pipe_score": [
       75,
       75,
+      75,
       75
     ],
     "labels": [
       "09-09",
       "09-10",
-      "09-11"
+      "09-11",
+      "09-12"
     ]
   },
   "shale_cycle": {
@@ -233,25 +235,25 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-09-11",
+        "date": "2026-09-12",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-09-11",
+        "date": "2026-09-12",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-09-11",
+        "date": "2026-09-12",
         "url": "Yahoo Finance",
         "error": null
       },
       "Rig Count": {
         "status": "AUTO",
-        "date": "2026-09-04",
+        "date": "2026-09-11",
         "url": "https://www.aogr.com/web-exclusives/us-rig-count/2026",
         "error": null
       },
