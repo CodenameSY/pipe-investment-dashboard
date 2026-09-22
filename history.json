@@ -724,6 +724,32 @@
       "US_HRC": 1166.0,
       "US_OCTG": 2325.0,
       "OCTG_HRC_SPREAD": 1159.0
+    },
+    {
+      "date": "2026-09-21",
+      "WTI": 92.61,
+      "BRENT": 96.52,
+      "USDKRW": 1384.86
+    },
+    {
+      "date": "2026-09-22",
+      "USDKRW": 1363.98,
+      "PIPE_SCORE": 75,
+      "PERMIAN_DUC": 828.0,
+      "PERMIAN_COMPLETIONS_Q": 1412.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 470.67,
+      "PERMIAN_RIGS": 267,
+      "DUC_COVER": 1.76,
+      "HP_MARGIN_DAY": 18669,
+      "HP_ACTIVE_RIGS": 142,
+      "PTEN_COMPLETION_GP": 123.0,
+      "WTI": 92.61,
+      "BRENT": 96.52,
+      "US_RIGS": 595,
+      "OIL_RIGS": 452,
+      "US_HRC": 1166.0,
+      "US_OCTG": 2325.0,
+      "OCTG_HRC_SPREAD": 1159.0
     }
   ]
 }
