@@ -1,5 +1,6 @@
 from __future__ import annotations
 import json, re
+from permian import parse_monthly, apply_monthly
 from io import BytesIO
 from pathlib import Path
 from datetime import datetime, timedelta
@@ -90,16 +91,17 @@ def fetch_oilpriceapi_permian():
 
 def fetch_eia_steo():
     url='https://api.eia.gov/v2/steo/data/'
-    params=[('api_key','DEMO_KEY'),('frequency','quarterly'),('data[0]','value'),('facets[seriesId][]','DUCSPM'),('facets[seriesId][]','NWCPM'),('facets[seriesId][]','RIGSPM'),('sort[0][column]','period'),('sort[0][direction]','desc'),('offset','0'),('length','24')]
-    r=requests.get(url,params=params,timeout=(8,35),headers=UA); r.raise_for_status(); rows=r.json().get('response',{}).get('data',[])
-    if not rows: raise RuntimeError('EIA STEO returned no data')
-    out={}; ids={'DUCSPM':'PERMIAN_DUC','NWCPM':'PERMIAN_COMPLETIONS_Q','RIGSPM':'PERMIAN_RIGS_Q'}
-    for sid,key in ids.items():
-        series=[x for x in rows if x.get('seriesId')==sid and x.get('value') not in (None,'')]
-        if series:
-            series.sort(key=lambda x:x.get('period',''),reverse=True); out[key]=float(series[0]['value']); out[key+'_PERIOD']=series[0].get('period')
-    if 'PERMIAN_DUC' not in out or 'PERMIAN_COMPLETIONS_Q' not in out: raise RuntimeError('EIA key series missing')
-    out['PERMIAN_MONTHLY_COMPLETIONS']=round(out['PERMIAN_COMPLETIONS_Q']/3,2); out['source']=r.url
+    end=(datetime.now(SEOUL).date().replace(day=1)-timedelta(days=1)).strftime('%Y-%m')
+    params=[('api_key','DEMO_KEY'),('frequency','monthly'),('data[0]','value'),('facets[seriesId][]','DUCSPM'),('facets[seriesId][]','NWCPM'),('facets[seriesId][]','RIGSPM'),('end',end),('sort[0][column]','period'),('sort[0][direction]','desc'),('length','180')]
+    r=requests.get(url,params=params,timeout=(8,35),headers=UA); r.raise_for_status()
+    rows=r.json().get('response',{}).get('data',[])
+    observations=parse_monthly(rows,end)
+    latest=observations[-1]
+    out={**latest, 'PERMIAN_DUC_PERIOD':latest['period'], 'observations':observations, 'source':r.url}
+    rigs=[x for x in rows if x.get('seriesId')=='RIGSPM' and x.get('period')==latest['period'] and x.get('value') not in (None,'')]
+    if rigs:
+        out['PERMIAN_RIGS_MONTHLY']=float(rigs[0]['value'])
+        out['PERMIAN_RIGS_MONTHLY_PERIOD']=latest['period']
     return out
 
 def discover_release(list_url, domain, needle):
@@ -151,7 +153,7 @@ def shale_cycle(cfg,hist_rows,live,sources):
     return {'signal':label,'score':score,'PERMIAN_DUC':duc,'PERMIAN_COMPLETIONS':comps,'PERMIAN_COMPLETIONS_Q':get('PERMIAN_COMPLETIONS_Q'),'DUC_COVER':cover,'DUC_CHANGE':pct(float(duc),old_duc) if duc and old_duc else None,'PERMIAN_RIGS':get('PERMIAN_RIGS'),'FRAC_SPREAD':s.get('FRAC_SPREAD'),'HP_ACTIVE_RIGS':get('HP_ACTIVE_RIGS'),'HP_SUPERSPEC_UTIL':s.get('HP_SUPERSPEC_UTIL'),'HP_MARGIN_DAY':get('HP_MARGIN_DAY'),'PTEN_DRILLING_RIGS':s.get('PTEN_DRILLING_RIGS'),'PTEN_COMPLETION_GP':get('PTEN_COMPLETION_GP'),'PTEN_COMPLETION_PRICING':pricing,'components':signals,'sources':sources,'as_of':s.get('AS_OF',{})}
 
 def update():
-    d=load(DATA); c=load(CONFIG); hist=load(HISTORY,{'snapshots':[]}); rows=hist.setdefault('snapshots',[]); errs=[]; live={}; sources={}
+    d=load(DATA); c=load(CONFIG); hist=load(HISTORY,{'snapshots':[]}); rows=hist.setdefault('snapshots',[]); errs=[]; live={}; sources={}; eia=None
     d.setdefault('meta',{})['version']='v5.7'
     for key,ticker in {'WTI':'CL=F','BRENT':'BZ=F','USDKRW':'KRW=X'}.items():
         try:
@@ -177,8 +179,8 @@ def update():
         errs.append(f'Permian rig mirror auto: {e}'); status_source(sources,'Permian Rig Count','STALE/FALLBACK',error=e)
     try:
         eia=fetch_eia_steo(); live.update({k:v for k,v in eia.items() if k.startswith('PERMIAN_')}); status_source(sources,'EIA STEO','AUTO',eia.get('PERMIAN_DUC_PERIOD'),eia['source'])
-        if live.get('PERMIAN_RIGS') in (None,'') and eia.get('PERMIAN_RIGS_Q') is not None:
-            live['PERMIAN_RIGS']=round(eia['PERMIAN_RIGS_Q']); status_source(sources,'Permian Rigs Fallback','AUTO',eia.get('PERMIAN_RIGS_Q_PERIOD'),eia['source'])
+        if live.get('PERMIAN_RIGS') in (None,'') and eia.get('PERMIAN_RIGS_MONTHLY') is not None:
+            live['PERMIAN_RIGS']=round(eia['PERMIAN_RIGS_MONTHLY']); status_source(sources,'Permian Rigs Fallback','AUTO',eia.get('PERMIAN_RIGS_MONTHLY_PERIOD'),eia['source'])
     except Exception as e: errs.append(f'EIA STEO auto: {e}'); status_source(sources,'EIA STEO','STALE/FALLBACK',error=e)
     try: hp=fetch_hp_metrics(); live.update(hp); status_source(sources,'HP IR','AUTO',url=hp['source'])
     except Exception as e: errs.append(f'HP IR auto: {e}'); status_source(sources,'HP IR','STALE/FALLBACK',error=e)
@@ -196,8 +198,20 @@ def update():
     total=round(sum(v['weight']*v['score'] for v in comp.values())/100); prev=(latest_from_history(rows,'PIPE_SCORE') or total)
     trend='BULLISH' if total>=70 else ('NEUTRAL' if total>=55 else 'BEARISH'); trend+=' · IMPROVING' if total>prev else (' · WEAKENING' if total<prev else ' · FLAT')
     d['score']={'pipe_cycle':total,'trend':trend,'components':comp}
+    if not eia and hist.get('permian_monthly'):
+        live.update(hist['permian_monthly'][-1])
     shale=shale_cycle(c,rows,live,sources); d['shale_cycle']=shale
-    today=datetime.now(SEOUL).date().isoformat(); snap={'date':today,'PIPE_SCORE':total,'PERMIAN_DUC':shale['PERMIAN_DUC'],'PERMIAN_COMPLETIONS_Q':shale.get('PERMIAN_COMPLETIONS_Q'),'PERMIAN_MONTHLY_COMPLETIONS':shale['PERMIAN_COMPLETIONS'],'PERMIAN_RIGS':shale['PERMIAN_RIGS'],'DUC_COVER':shale['DUC_COVER'],'HP_MARGIN_DAY':shale['HP_MARGIN_DAY'],'HP_ACTIVE_RIGS':shale['HP_ACTIVE_RIGS'],'PTEN_COMPLETION_GP':shale['PTEN_COMPLETION_GP']}
+    if eia:
+        apply_monthly(d,hist,eia['observations'],eia['source'])
+    elif hist.get('permian_monthly'):
+        fallback_status=sources['EIA STEO'].copy()
+        apply_monthly(d,hist,hist['permian_monthly'],hist.get('permian_monthly_source'))
+        fallback_status['date']=shale['PERMIAN_PERIOD']
+        sources['EIA STEO']=fallback_status
+        shale['sources']['EIA STEO']=fallback_status
+    else:
+        shale.update(PERMIAN_DUC=None,PERMIAN_COMPLETIONS=None,PERMIAN_COMPLETIONS_Q=None,DUC_COVER=None,DUC_CHANGE=None)
+    today=datetime.now(SEOUL).date().isoformat(); snap={'date':today,'PIPE_SCORE':total,'PERMIAN_PERIOD':shale.get('PERMIAN_PERIOD'),'PERMIAN_DUC':shale['PERMIAN_DUC'],'PERMIAN_COMPLETIONS_Q':shale.get('PERMIAN_COMPLETIONS_Q'),'PERMIAN_MONTHLY_COMPLETIONS':shale['PERMIAN_COMPLETIONS'],'PERMIAN_RIGS':shale['PERMIAN_RIGS'],'DUC_COVER':shale['DUC_COVER'],'HP_MARGIN_DAY':shale['HP_MARGIN_DAY'],'HP_ACTIVE_RIGS':shale['HP_ACTIVE_RIGS'],'PTEN_COMPLETION_GP':shale['PTEN_COMPLETION_GP']}
     for key in ['WTI','BRENT','USDKRW','US_RIGS','OIL_RIGS','US_HRC','US_OCTG','OCTG_HRC_SPREAD']: snap[key]=d['market'][key]['value']
     hist['snapshots']=merge_today(rows,snap)[-730:]
     for key in ['US_HRC','US_OCTG','OCTG_HRC_SPREAD','OIL_RIGS','US_RIGS']:

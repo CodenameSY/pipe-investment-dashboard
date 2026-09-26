@@ -831,5 +831,56 @@
       "US_OCTG": 2325.0,
       "OCTG_HRC_SPREAD": 1159.0
     }
-  ]
+  ],
+  "permian_monthly": [
+    {
+      "period": "2026-01",
+      "PERMIAN_DUC": 886.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 432.0,
+      "DUC_COVER": 2.05
+    },
+    {
+      "period": "2026-02",
+      "PERMIAN_DUC": 871.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 451.0,
+      "DUC_COVER": 1.93
+    },
+    {
+      "period": "2026-03",
+      "PERMIAN_DUC": 861.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 452.0,
+      "DUC_COVER": 1.9
+    },
+    {
+      "period": "2026-04",
+      "PERMIAN_DUC": 831.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 475.0,
+      "DUC_COVER": 1.75
+    },
+    {
+      "period": "2026-05",
+      "PERMIAN_DUC": 826.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 462.0,
+      "DUC_COVER": 1.79
+    },
+    {
+      "period": "2026-06",
+      "PERMIAN_DUC": 828.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 475.0,
+      "DUC_COVER": 1.74
+    },
+    {
+      "period": "2026-07",
+      "PERMIAN_DUC": 828.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 484.0,
+      "DUC_COVER": 1.71
+    },
+    {
+      "period": "2026-08",
+      "PERMIAN_DUC": 839.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 488.0,
+      "DUC_COVER": 1.72
+    }
+  ],
+  "permian_monthly_source": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data[0]=value&facets[seriesId][]=DUCSPM&facets[seriesId][]=NWCPM&start=2026-01&end=2026-08&length=100"
 }

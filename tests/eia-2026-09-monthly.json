@@ -1,0 +1,148 @@
+{
+  "response": {
+    "total": "16",
+    "dateFormat": "YYYY-MM",
+    "frequency": "monthly",
+    "data": [
+      {
+        "period": "2026-08",
+        "seriesId": "DUCSPM",
+        "seriesDescription": "Permian Drilled but Uncompleted Wells ",
+        "value": "839",
+        "unit": null
+      },
+      {
+        "period": "2026-08",
+        "seriesId": "NWCPM",
+        "seriesDescription": "Permian New Wells Completed",
+        "value": "488",
+        "unit": null
+      },
+      {
+        "period": "2026-07",
+        "seriesId": "DUCSPM",
+        "seriesDescription": "Permian Drilled but Uncompleted Wells ",
+        "value": "828",
+        "unit": null
+      },
+      {
+        "period": "2026-07",
+        "seriesId": "NWCPM",
+        "seriesDescription": "Permian New Wells Completed",
+        "value": "484",
+        "unit": null
+      },
+      {
+        "period": "2026-06",
+        "seriesId": "DUCSPM",
+        "seriesDescription": "Permian Drilled but Uncompleted Wells ",
+        "value": "828",
+        "unit": null
+      },
+      {
+        "period": "2026-06",
+        "seriesId": "NWCPM",
+        "seriesDescription": "Permian New Wells Completed",
+        "value": "475",
+        "unit": null
+      },
+      {
+        "period": "2026-05",
+        "seriesId": "DUCSPM",
+        "seriesDescription": "Permian Drilled but Uncompleted Wells ",
+        "value": "826",
+        "unit": null
+      },
+      {
+        "period": "2026-05",
+        "seriesId": "NWCPM",
+        "seriesDescription": "Permian New Wells Completed",
+        "value": "462",
+        "unit": null
+      },
+      {
+        "period": "2026-04",
+        "seriesId": "DUCSPM",
+        "seriesDescription": "Permian Drilled but Uncompleted Wells ",
+        "value": "831",
+        "unit": null
+      },
+      {
+        "period": "2026-04",
+        "seriesId": "NWCPM",
+        "seriesDescription": "Permian New Wells Completed",
+        "value": "475",
+        "unit": null
+      },
+      {
+        "period": "2026-03",
+        "seriesId": "DUCSPM",
+        "seriesDescription": "Permian Drilled but Uncompleted Wells ",
+        "value": "861",
+        "unit": null
+      },
+      {
+        "period": "2026-03",
+        "seriesId": "NWCPM",
+        "seriesDescription": "Permian New Wells Completed",
+        "value": "452",
+        "unit": null
+      },
+      {
+        "period": "2026-02",
+        "seriesId": "DUCSPM",
+        "seriesDescription": "Permian Drilled but Uncompleted Wells ",
+        "value": "871",
+        "unit": null
+      },
+      {
+        "period": "2026-02",
+        "seriesId": "NWCPM",
+        "seriesDescription": "Permian New Wells Completed",
+        "value": "451",
+        "unit": null
+      },
+      {
+        "period": "2026-01",
+        "seriesId": "DUCSPM",
+        "seriesDescription": "Permian Drilled but Uncompleted Wells ",
+        "value": "886",
+        "unit": null
+      },
+      {
+        "period": "2026-01",
+        "seriesId": "NWCPM",
+        "seriesDescription": "Permian New Wells Completed",
+        "value": "432",
+        "unit": null
+      }
+    ],
+    "description": "Monthly short term (18 month) projections using STEO model.  \r\n        Report and interactive projection data browser:  STEO (www.eia.gov/steo/)"
+  },
+  "request": {
+    "command": "/v2/steo/data/",
+    "params": {
+      "frequency": "monthly",
+      "data": [
+        "value"
+      ],
+      "facets": {
+        "seriesId": [
+          "DUCSPM",
+          "NWCPM"
+        ]
+      },
+      "sort": [
+        {
+          "column": "period",
+          "direction": "desc"
+        }
+      ],
+      "start": "2026-01",
+      "end": "2026-08",
+      "length": "100"
+    }
+  },
+  "apiVersion": "2.1.14",
+  "ExcelAddInVersion": "2.1.0"
+}

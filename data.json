@@ -37,8 +37,8 @@
       },
       "EIA STEO": {
         "status": "AUTO",
-        "date": "2026-Q2",
-        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=quarterly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&offset=0&length=24",
+        "date": "2026-08",
+        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data[0]=value&facets[seriesId][]=DUCSPM&facets[seriesId][]=NWCPM&start=2026-01&end=2026-08&length=100",
         "error": null
       },
       "HP IR": {
@@ -231,11 +231,11 @@
   "shale_cycle": {
     "signal": "SHALE CYCLE CONFIRMED",
     "score": 81,
-    "PERMIAN_DUC": 828.0,
-    "PERMIAN_COMPLETIONS": 470.67,
-    "PERMIAN_COMPLETIONS_Q": 1412.0,
-    "DUC_COVER": 1.76,
-    "DUC_CHANGE": 0.36,
+    "PERMIAN_DUC": 839.0,
+    "PERMIAN_COMPLETIONS": 488.0,
+    "PERMIAN_COMPLETIONS_Q": null,
+    "DUC_COVER": 1.72,
+    "DUC_CHANGE": 1.33,
     "PERMIAN_RIGS": 267,
     "FRAC_SPREAD": null,
     "HP_ACTIVE_RIGS": 142,
@@ -283,8 +283,8 @@
       },
       "EIA STEO": {
         "status": "AUTO",
-        "date": "2026-Q2",
-        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=quarterly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&offset=0&length=24",
+        "date": "2026-08",
+        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data[0]=value&facets[seriesId][]=DUCSPM&facets[seriesId][]=NWCPM&start=2026-01&end=2026-08&length=100",
         "error": null
       },
       "HP IR": {
@@ -313,9 +313,10 @@
       }
     },
     "as_of": {
-      "PERMIAN_DUC": "2026-Q2 EIA STEO vintage",
+      "PERMIAN_DUC": "2026-08 EIA STEO monthly",
       "HP": "FY2026 Q3",
       "PTEN": "2026 Q3 guidance / 2026 Q2 commentary"
-    }
+    },
+    "PERMIAN_PERIOD": "2026-08"
   }
 }

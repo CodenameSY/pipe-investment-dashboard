@@ -36,7 +36,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Verify monthly parsing
+        run: python -m unittest discover -s tests
+
       - name: Update dashboard data
+        if: github.event_name != 'push'
         run: python update_data.py
 
       - name: Save scheduled/manual data refresh
