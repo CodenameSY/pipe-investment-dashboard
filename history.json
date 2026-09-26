@@ -793,7 +793,7 @@
     },
     {
       "date": "2026-09-25",
-      "USDKRW": 1355.28,
+      "USDKRW": 1367.36,
       "PIPE_SCORE": 75,
       "PERMIAN_DUC": 828.0,
       "PERMIAN_COMPLETIONS_Q": 1412.0,
@@ -803,8 +803,8 @@
       "HP_MARGIN_DAY": 18669,
       "HP_ACTIVE_RIGS": 142,
       "PTEN_COMPLETION_GP": 123.0,
-      "WTI": 92.44,
-      "BRENT": 97.47,
+      "WTI": 92.41,
+      "BRENT": 104.32,
       "US_RIGS": 595,
       "OIL_RIGS": 452,
       "US_HRC": 1166.0,
@@ -824,7 +824,28 @@
       "PTEN_COMPLETION_GP": 123.0,
       "WTI": 92.44,
       "BRENT": 97.47,
-      "USDKRW": 1355.28,
+      "USDKRW": 1354.4,
+      "US_RIGS": 599,
+      "OIL_RIGS": 455,
+      "US_HRC": 1166.0,
+      "US_OCTG": 2325.0,
+      "OCTG_HRC_SPREAD": 1159.0
+    },
+    {
+      "date": "2026-09-27",
+      "PIPE_SCORE": 75,
+      "PERMIAN_PERIOD": "2026-08",
+      "PERMIAN_DUC": 839.0,
+      "PERMIAN_COMPLETIONS_Q": null,
+      "PERMIAN_MONTHLY_COMPLETIONS": 488.0,
+      "PERMIAN_RIGS": 267,
+      "DUC_COVER": 1.72,
+      "HP_MARGIN_DAY": 18669,
+      "HP_ACTIVE_RIGS": 142,
+      "PTEN_COMPLETION_GP": 123.0,
+      "WTI": 92.41,
+      "BRENT": 104.32,
+      "USDKRW": 1354.4,
       "US_RIGS": 599,
       "OIL_RIGS": 455,
       "US_HRC": 1166.0,
@@ -833,6 +854,318 @@
     }
   ],
   "permian_monthly": [
+    {
+      "period": "2021-09",
+      "PERMIAN_DUC": 2960.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 441.0,
+      "DUC_COVER": 6.71
+    },
+    {
+      "period": "2021-10",
+      "PERMIAN_DUC": 2769.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 549.0,
+      "DUC_COVER": 5.04
+    },
+    {
+      "period": "2021-11",
+      "PERMIAN_DUC": 2693.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 447.0,
+      "DUC_COVER": 6.02
+    },
+    {
+      "period": "2021-12",
+      "PERMIAN_DUC": 2599.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 486.0,
+      "DUC_COVER": 5.35
+    },
+    {
+      "period": "2022-01",
+      "PERMIAN_DUC": 2546.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 454.0,
+      "DUC_COVER": 5.61
+    },
+    {
+      "period": "2022-02",
+      "PERMIAN_DUC": 2528.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 435.0,
+      "DUC_COVER": 5.81
+    },
+    {
+      "period": "2022-03",
+      "PERMIAN_DUC": 2485.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 477.0,
+      "DUC_COVER": 5.21
+    },
+    {
+      "period": "2022-04",
+      "PERMIAN_DUC": 2439.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 512.0,
+      "DUC_COVER": 4.76
+    },
+    {
+      "period": "2022-05",
+      "PERMIAN_DUC": 2413.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 503.0,
+      "DUC_COVER": 4.8
+    },
+    {
+      "period": "2022-06",
+      "PERMIAN_DUC": 2362.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 538.0,
+      "DUC_COVER": 4.39
+    },
+    {
+      "period": "2022-07",
+      "PERMIAN_DUC": 2311.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 554.0,
+      "DUC_COVER": 4.17
+    },
+    {
+      "period": "2022-08",
+      "PERMIAN_DUC": 2245.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 564.0,
+      "DUC_COVER": 3.98
+    },
+    {
+      "period": "2022-09",
+      "PERMIAN_DUC": 2224.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 523.0,
+      "DUC_COVER": 4.25
+    },
+    {
+      "period": "2022-10",
+      "PERMIAN_DUC": 2148.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 585.0,
+      "DUC_COVER": 3.67
+    },
+    {
+      "period": "2022-11",
+      "PERMIAN_DUC": 2132.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 531.0,
+      "DUC_COVER": 4.02
+    },
+    {
+      "period": "2022-12",
+      "PERMIAN_DUC": 2147.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 506.0,
+      "DUC_COVER": 4.24
+    },
+    {
+      "period": "2023-01",
+      "PERMIAN_DUC": 2118.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 554.0,
+      "DUC_COVER": 3.82
+    },
+    {
+      "period": "2023-02",
+      "PERMIAN_DUC": 2194.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 449.0,
+      "DUC_COVER": 4.89
+    },
+    {
+      "period": "2023-03",
+      "PERMIAN_DUC": 2125.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 590.0,
+      "DUC_COVER": 3.6
+    },
+    {
+      "period": "2023-04",
+      "PERMIAN_DUC": 2113.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 542.0,
+      "DUC_COVER": 3.9
+    },
+    {
+      "period": "2023-05",
+      "PERMIAN_DUC": 2072.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 561.0,
+      "DUC_COVER": 3.69
+    },
+    {
+      "period": "2023-06",
+      "PERMIAN_DUC": 2114.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 472.0,
+      "DUC_COVER": 4.48
+    },
+    {
+      "period": "2023-07",
+      "PERMIAN_DUC": 2086.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 529.0,
+      "DUC_COVER": 3.94
+    },
+    {
+      "period": "2023-08",
+      "PERMIAN_DUC": 2049.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 522.0,
+      "DUC_COVER": 3.93
+    },
+    {
+      "period": "2023-09",
+      "PERMIAN_DUC": 2049.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 477.0,
+      "DUC_COVER": 4.3
+    },
+    {
+      "period": "2023-10",
+      "PERMIAN_DUC": 1949.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 565.0,
+      "DUC_COVER": 3.45
+    },
+    {
+      "period": "2023-11",
+      "PERMIAN_DUC": 1964.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 453.0,
+      "DUC_COVER": 4.34
+    },
+    {
+      "period": "2023-12",
+      "PERMIAN_DUC": 1978.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 454.0,
+      "DUC_COVER": 4.36
+    },
+    {
+      "period": "2024-01",
+      "PERMIAN_DUC": 1949.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 495.0,
+      "DUC_COVER": 3.94
+    },
+    {
+      "period": "2024-02",
+      "PERMIAN_DUC": 1870.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 551.0,
+      "DUC_COVER": 3.39
+    },
+    {
+      "period": "2024-03",
+      "PERMIAN_DUC": 1830.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 517.0,
+      "DUC_COVER": 3.54
+    },
+    {
+      "period": "2024-04",
+      "PERMIAN_DUC": 1752.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 555.0,
+      "DUC_COVER": 3.16
+    },
+    {
+      "period": "2024-05",
+      "PERMIAN_DUC": 1701.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 524.0,
+      "DUC_COVER": 3.25
+    },
+    {
+      "period": "2024-06",
+      "PERMIAN_DUC": 1686.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 482.0,
+      "DUC_COVER": 3.5
+    },
+    {
+      "period": "2024-07",
+      "PERMIAN_DUC": 1557.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 592.0,
+      "DUC_COVER": 2.63
+    },
+    {
+      "period": "2024-08",
+      "PERMIAN_DUC": 1490.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 532.0,
+      "DUC_COVER": 2.8
+    },
+    {
+      "period": "2024-09",
+      "PERMIAN_DUC": 1475.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 482.0,
+      "DUC_COVER": 3.06
+    },
+    {
+      "period": "2024-10",
+      "PERMIAN_DUC": 1417.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 526.0,
+      "DUC_COVER": 2.69
+    },
+    {
+      "period": "2024-11",
+      "PERMIAN_DUC": 1374.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 512.0,
+      "DUC_COVER": 2.68
+    },
+    {
+      "period": "2024-12",
+      "PERMIAN_DUC": 1390.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 456.0,
+      "DUC_COVER": 3.05
+    },
+    {
+      "period": "2025-01",
+      "PERMIAN_DUC": 1336.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 527.0,
+      "DUC_COVER": 2.54
+    },
+    {
+      "period": "2025-02",
+      "PERMIAN_DUC": 1291.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 524.0,
+      "DUC_COVER": 2.46
+    },
+    {
+      "period": "2025-03",
+      "PERMIAN_DUC": 1272.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 506.0,
+      "DUC_COVER": 2.51
+    },
+    {
+      "period": "2025-04",
+      "PERMIAN_DUC": 1168.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 579.0,
+      "DUC_COVER": 2.02
+    },
+    {
+      "period": "2025-05",
+      "PERMIAN_DUC": 1148.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 492.0,
+      "DUC_COVER": 2.33
+    },
+    {
+      "period": "2025-06",
+      "PERMIAN_DUC": 1149.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 457.0,
+      "DUC_COVER": 2.51
+    },
+    {
+      "period": "2025-07",
+      "PERMIAN_DUC": 1172.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 421.0,
+      "DUC_COVER": 2.78
+    },
+    {
+      "period": "2025-08",
+      "PERMIAN_DUC": 1066.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 542.0,
+      "DUC_COVER": 1.97
+    },
+    {
+      "period": "2025-09",
+      "PERMIAN_DUC": 1012.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 487.0,
+      "DUC_COVER": 2.08
+    },
+    {
+      "period": "2025-10",
+      "PERMIAN_DUC": 982.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 470.0,
+      "DUC_COVER": 2.09
+    },
+    {
+      "period": "2025-11",
+      "PERMIAN_DUC": 901.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 525.0,
+      "DUC_COVER": 1.72
+    },
+    {
+      "period": "2025-12",
+      "PERMIAN_DUC": 878.0,
+      "PERMIAN_MONTHLY_COMPLETIONS": 467.0,
+      "DUC_COVER": 1.88
+    },
     {
       "period": "2026-01",
       "PERMIAN_DUC": 886.0,
@@ -882,5 +1215,5 @@
       "DUC_COVER": 1.72
     }
   ],
-  "permian_monthly_source": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data[0]=value&facets[seriesId][]=DUCSPM&facets[seriesId][]=NWCPM&start=2026-01&end=2026-08&length=100"
+  "permian_monthly_source": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-08&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180"
 }
