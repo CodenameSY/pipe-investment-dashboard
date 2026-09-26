@@ -1,31 +1,31 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-09-25T09:30:48+09:00",
+    "last_updated": "2026-09-26T09:34:41+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-09-25",
+        "date": "2026-09-26",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-09-25",
+        "date": "2026-09-26",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-09-25",
+        "date": "2026-09-26",
         "url": "Yahoo Finance",
         "error": null
       },
       "Rig Count": {
         "status": "AUTO",
-        "date": "2026-09-18",
+        "date": "2026-09-25",
         "url": "https://www.aogr.com/web-exclusives/us-rig-count/2026",
         "error": null
       },
@@ -69,52 +69,52 @@
   },
   "market": {
     "WTI": {
-      "value": 93.91,
+      "value": 92.44,
       "unit": "$/bbl",
-      "change_1w": -7.85,
-      "change_1m": 14.02,
+      "change_1w": -7.84,
+      "change_1m": 12.42,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 105.89,
+      "value": 97.47,
       "unit": "$/bbl",
-      "change_1w": 1.02,
-      "change_1m": 19.54,
+      "change_1w": -6.16,
+      "change_1m": 10.96,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1368.58,
+      "value": 1355.28,
       "unit": "KRW",
-      "change_1w": -0.79,
-      "change_1m": -1.08,
+      "change_1w": -1.76,
+      "change_1m": -2.04,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "US_RIGS": {
-      "value": 595,
+      "value": 599,
       "unit": "rigs",
-      "change_1w": 0,
+      "change_1w": 4,
       "change_4w": 11,
       "score": 76,
       "manual": false,
       "source": "AOGR / Baker Hughes data",
-      "source_date": "2026-09-18"
+      "source_date": "2026-09-25"
     },
     "OIL_RIGS": {
-      "value": 452,
+      "value": 455,
       "unit": "rigs",
-      "change_1w": 0,
+      "change_1w": 3,
       "change_4w": 9,
       "score": 78,
       "manual": false,
       "source": "AOGR / Baker Hughes data",
-      "source_date": "2026-09-18",
-      "change_1m": 1.12
+      "source_date": "2026-09-25",
+      "change_1m": 1.79
     },
     "US_HRC": {
       "value": 1166.0,
@@ -213,7 +213,6 @@
       75
     ],
     "labels": [
-      "09-11",
       "09-12",
       "09-13",
       "09-15",
@@ -225,7 +224,8 @@
       "09-22",
       "09-23",
       "09-24",
-      "09-25"
+      "09-25",
+      "09-26"
     ]
   },
   "shale_cycle": {
@@ -253,25 +253,25 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-09-25",
+        "date": "2026-09-26",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-09-25",
+        "date": "2026-09-26",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-09-25",
+        "date": "2026-09-26",
         "url": "Yahoo Finance",
         "error": null
       },
       "Rig Count": {
         "status": "AUTO",
-        "date": "2026-09-18",
+        "date": "2026-09-25",
         "url": "https://www.aogr.com/web-exclusives/us-rig-count/2026",
         "error": null
       },
