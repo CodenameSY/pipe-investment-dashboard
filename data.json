@@ -1,25 +1,25 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-09-30T10:15:20+09:00",
+    "last_updated": "2026-10-01T10:15:04+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-09-30",
+        "date": "2026-10-01",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-09-30",
+        "date": "2026-10-01",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-09-30",
+        "date": "2026-10-01",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -38,7 +38,7 @@
       "EIA STEO": {
         "status": "AUTO",
         "date": "2026-08",
-        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-08&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
+        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
         "error": null
       },
       "HP IR": {
@@ -55,7 +55,7 @@
       },
       "SteelBenchmarker HRC": {
         "status": "AUTO",
-        "date": "September 16, 2026",
+        "date": "September 30, 2026",
         "url": "https://steelbenchmarker.com/history.pdf",
         "error": null
       },
@@ -69,28 +69,28 @@
   },
   "market": {
     "WTI": {
-      "value": 89.33,
+      "value": 90.07,
       "unit": "$/bbl",
-      "change_1w": -5.56,
-      "change_1m": 7.11,
-      "score": 72,
+      "change_1w": -2.27,
+      "change_1m": 5.03,
+      "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 96.22,
+      "value": 97.84,
       "unit": "$/bbl",
-      "change_1w": -3.05,
-      "change_1m": 7.74,
+      "change_1w": -5.08,
+      "change_1m": 8.12,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1357.38,
+      "value": 1360.78,
       "unit": "KRW",
-      "change_1w": 0.52,
-      "change_1m": -0.68,
+      "change_1w": -0.13,
+      "change_1m": -0.88,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
@@ -117,13 +117,13 @@
       "change_1m": 1.79
     },
     "US_HRC": {
-      "value": 1166.0,
+      "value": 1173.0,
       "unit": "$/st",
-      "change_1m": 1.68,
+      "change_1m": 2.3,
       "score": 52,
       "manual": false,
       "source": "SteelBenchmarker",
-      "source_date": "September 16, 2026",
+      "source_date": "September 30, 2026",
       "source_url": "https://steelbenchmarker.com/history.pdf"
     },
     "US_OCTG": {
@@ -135,9 +135,9 @@
       "source": "config.json/manual"
     },
     "OCTG_HRC_SPREAD": {
-      "value": 1159.0,
+      "value": 1152.0,
       "unit": "$/st",
-      "change_1m": -5.64,
+      "change_1m": -6.21,
       "score": 91,
       "derived": true
     }
@@ -145,21 +145,21 @@
   "stocks": {
     "세아제강": {
       "ticker": "306200.KS",
-      "price": 155100.0,
-      "change_1w": 6.82,
-      "change_1m": 11.34
+      "price": 153100.0,
+      "change_1w": 7.29,
+      "change_1m": 10.14
     },
     "넥스틸": {
       "ticker": "092790.KS",
-      "price": 14450.0,
-      "change_1w": 3.58,
-      "change_1m": 13.51
+      "price": 13860.0,
+      "change_1w": -2.74,
+      "change_1m": 9.91
     },
     "휴스틸": {
       "ticker": "005010.KS",
-      "price": 4165.0,
-      "change_1w": 3.48,
-      "change_1m": 7.9
+      "price": 4035.0,
+      "change_1w": 0.37,
+      "change_1m": 7.6
     }
   },
   "score": {
@@ -176,7 +176,7 @@
       },
       "Oil": {
         "weight": 10,
-        "score": 68
+        "score": 65
       },
       "HRC Cost": {
         "weight": 10,
@@ -213,7 +213,6 @@
       75
     ],
     "labels": [
-      "09-16",
       "09-17",
       "09-18",
       "09-19",
@@ -225,7 +224,8 @@
       "09-26",
       "09-27",
       "09-29",
-      "09-30"
+      "09-30",
+      "10-01"
     ]
   },
   "shale_cycle": {
@@ -253,19 +253,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-09-30",
+        "date": "2026-10-01",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-09-30",
+        "date": "2026-10-01",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-09-30",
+        "date": "2026-10-01",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -284,7 +284,7 @@
       "EIA STEO": {
         "status": "AUTO",
         "date": "2026-08",
-        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-08&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
+        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
         "error": null
       },
       "HP IR": {
@@ -301,7 +301,7 @@
       },
       "SteelBenchmarker HRC": {
         "status": "AUTO",
-        "date": "September 16, 2026",
+        "date": "September 30, 2026",
         "url": "https://steelbenchmarker.com/history.pdf",
         "error": null
       },
