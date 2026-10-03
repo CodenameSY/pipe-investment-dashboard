@@ -1,25 +1,27 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-10-03T10:07:12+09:00",
+    "last_updated": "2026-10-04T02:29:06+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
-    "errors": [],
+    "errors": [
+      "Permian rig mirror auto: OilPriceAPI Permian page parse failed"
+    ],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-03",
+        "date": "2026-10-04",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-03",
+        "date": "2026-10-04",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-03",
+        "date": "2026-10-04",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -30,12 +32,18 @@
         "error": null
       },
       "Permian Rig Count": {
-        "status": "AUTO",
-        "date": "2026-09-26",
-        "url": "https://www.oilpriceapi.com/data/rig-count/permian",
-        "error": null
+        "status": "STALE/FALLBACK",
+        "date": null,
+        "url": null,
+        "error": "OilPriceAPI Permian page parse failed"
       },
       "EIA STEO": {
+        "status": "AUTO",
+        "date": "2026-08",
+        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
+        "error": null
+      },
+      "Permian Rigs Fallback": {
         "status": "AUTO",
         "date": "2026-08",
         "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
@@ -69,19 +77,19 @@
   },
   "market": {
     "WTI": {
-      "value": 91.26,
+      "value": 91.11,
       "unit": "$/bbl",
-      "change_1w": -1.24,
-      "change_1m": 0.27,
+      "change_1w": -1.41,
+      "change_1m": 0.11,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 102.7,
+      "value": 102.25,
       "unit": "$/bbl",
-      "change_1w": -1.55,
-      "change_1m": 7.39,
+      "change_1w": -1.98,
+      "change_1m": 6.92,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
@@ -98,7 +106,7 @@
     "US_RIGS": {
       "value": 598,
       "unit": "rigs",
-      "change_1w": -1,
+      "change_1w": 0,
       "change_4w": 11,
       "score": 76,
       "manual": false,
@@ -108,7 +116,7 @@
     "OIL_RIGS": {
       "value": 456,
       "unit": "rigs",
-      "change_1w": 1,
+      "change_1w": 0,
       "change_4w": 9,
       "score": 78,
       "manual": false,
@@ -213,7 +221,6 @@
       75
     ],
     "labels": [
-      "09-19",
       "09-20",
       "09-22",
       "09-23",
@@ -225,7 +232,8 @@
       "09-30",
       "10-01",
       "10-02",
-      "10-03"
+      "10-03",
+      "10-04"
     ]
   },
   "shale_cycle": {
@@ -236,7 +244,7 @@
     "PERMIAN_COMPLETIONS_Q": null,
     "DUC_COVER": 1.72,
     "DUC_CHANGE": 1.33,
-    "PERMIAN_RIGS": 267,
+    "PERMIAN_RIGS": 266,
     "FRAC_SPREAD": null,
     "HP_ACTIVE_RIGS": 142,
     "HP_SUPERSPEC_UTIL": 95,
@@ -253,19 +261,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-03",
+        "date": "2026-10-04",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-03",
+        "date": "2026-10-04",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-03",
+        "date": "2026-10-04",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -276,12 +284,18 @@
         "error": null
       },
       "Permian Rig Count": {
-        "status": "AUTO",
-        "date": "2026-09-26",
-        "url": "https://www.oilpriceapi.com/data/rig-count/permian",
-        "error": null
+        "status": "STALE/FALLBACK",
+        "date": null,
+        "url": null,
+        "error": "OilPriceAPI Permian page parse failed"
       },
       "EIA STEO": {
+        "status": "AUTO",
+        "date": "2026-08",
+        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
+        "error": null
+      },
+      "Permian Rigs Fallback": {
         "status": "AUTO",
         "date": "2026-08",
         "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
