@@ -1,27 +1,25 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-10-04T02:29:06+09:00",
+    "last_updated": "2026-10-06T11:13:38+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
-    "errors": [
-      "Permian rig mirror auto: OilPriceAPI Permian page parse failed"
-    ],
+    "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-04",
+        "date": "2026-10-06",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-04",
+        "date": "2026-10-06",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-04",
+        "date": "2026-10-06",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -32,18 +30,12 @@
         "error": null
       },
       "Permian Rig Count": {
-        "status": "STALE/FALLBACK",
-        "date": null,
-        "url": null,
-        "error": "OilPriceAPI Permian page parse failed"
-      },
-      "EIA STEO": {
         "status": "AUTO",
-        "date": "2026-08",
-        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
+        "date": "2026-10-03",
+        "url": "https://www.oilpriceapi.com/data/rig-count/permian",
         "error": null
       },
-      "Permian Rigs Fallback": {
+      "EIA STEO": {
         "status": "AUTO",
         "date": "2026-08",
         "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
@@ -77,28 +69,28 @@
   },
   "market": {
     "WTI": {
-      "value": 91.11,
+      "value": 89.56,
       "unit": "$/bbl",
-      "change_1w": -1.41,
-      "change_1m": 0.11,
-      "score": 65,
+      "change_1w": -3.28,
+      "change_1m": -1.91,
+      "score": 72,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 102.25,
+      "value": 100.6,
       "unit": "$/bbl",
-      "change_1w": -1.98,
-      "change_1m": 6.92,
+      "change_1w": -4.45,
+      "change_1m": 5.32,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1342.51,
+      "value": 1343.34,
       "unit": "KRW",
-      "change_1w": -1.82,
-      "change_1m": -1.17,
+      "change_1w": -1.19,
+      "change_1m": -0.13,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
@@ -153,21 +145,21 @@
   "stocks": {
     "세아제강": {
       "ticker": "306200.KS",
-      "price": 154600.0,
-      "change_1w": 11.87,
-      "change_1m": 10.74
+      "price": 156000.0,
+      "change_1w": 5.76,
+      "change_1m": 12.64
     },
     "넥스틸": {
       "ticker": "092790.KS",
-      "price": 14080.0,
-      "change_1w": 5.07,
-      "change_1m": 10.17
+      "price": 14380.0,
+      "change_1w": 4.81,
+      "change_1m": 13.41
     },
     "휴스틸": {
       "ticker": "005010.KS",
-      "price": 4030.0,
-      "change_1w": 5.22,
-      "change_1m": 7.47
+      "price": 4095.0,
+      "change_1w": 3.41,
+      "change_1m": 8.48
     }
   },
   "score": {
@@ -184,7 +176,7 @@
       },
       "Oil": {
         "weight": 10,
-        "score": 65
+        "score": 68
       },
       "HRC Cost": {
         "weight": 10,
@@ -221,7 +213,6 @@
       75
     ],
     "labels": [
-      "09-20",
       "09-22",
       "09-23",
       "09-24",
@@ -233,7 +224,8 @@
       "10-01",
       "10-02",
       "10-03",
-      "10-04"
+      "10-04",
+      "10-06"
     ]
   },
   "shale_cycle": {
@@ -244,7 +236,7 @@
     "PERMIAN_COMPLETIONS_Q": null,
     "DUC_COVER": 1.72,
     "DUC_CHANGE": 1.33,
-    "PERMIAN_RIGS": 266,
+    "PERMIAN_RIGS": 267,
     "FRAC_SPREAD": null,
     "HP_ACTIVE_RIGS": 142,
     "HP_SUPERSPEC_UTIL": 95,
@@ -261,19 +253,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-04",
+        "date": "2026-10-06",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-04",
+        "date": "2026-10-06",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-04",
+        "date": "2026-10-06",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -284,18 +276,12 @@
         "error": null
       },
       "Permian Rig Count": {
-        "status": "STALE/FALLBACK",
-        "date": null,
-        "url": null,
-        "error": "OilPriceAPI Permian page parse failed"
-      },
-      "EIA STEO": {
         "status": "AUTO",
-        "date": "2026-08",
-        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
+        "date": "2026-10-03",
+        "url": "https://www.oilpriceapi.com/data/rig-count/permian",
         "error": null
       },
-      "Permian Rigs Fallback": {
+      "EIA STEO": {
         "status": "AUTO",
         "date": "2026-08",
         "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
