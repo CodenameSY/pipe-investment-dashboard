@@ -1,25 +1,25 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-10-14T10:09:56+09:00",
+    "last_updated": "2026-10-15T09:28:46+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-14",
+        "date": "2026-10-15",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-14",
+        "date": "2026-10-15",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-14",
+        "date": "2026-10-15",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -69,28 +69,28 @@
   },
   "market": {
     "WTI": {
-      "value": 95.01,
+      "value": 94.58,
       "unit": "$/bbl",
-      "change_1w": 6.23,
-      "change_1m": -6.29,
+      "change_1w": 7.14,
+      "change_1m": -10.63,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 106.73,
+      "value": 105.39,
       "unit": "$/bbl",
-      "change_1w": 6.11,
-      "change_1m": 0.99,
+      "change_1w": 5.18,
+      "change_1m": -3.09,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1339.48,
+      "value": 1346.28,
       "unit": "KRW",
-      "change_1w": -0.02,
-      "change_1m": -0.46,
+      "change_1w": 0.54,
+      "change_1m": -1.27,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
@@ -120,7 +120,7 @@
     "US_HRC": {
       "value": 1173.0,
       "unit": "$/st",
-      "change_1m": 0.69,
+      "change_1m": 0.6,
       "score": 52,
       "manual": false,
       "source": "SteelBenchmarker",
@@ -138,7 +138,7 @@
     "OCTG_HRC_SPREAD": {
       "value": 1152.0,
       "unit": "$/st",
-      "change_1m": -0.69,
+      "change_1m": -0.6,
       "score": 91,
       "derived": true
     }
@@ -146,21 +146,21 @@
   "stocks": {
     "세아제강": {
       "ticker": "306200.KS",
-      "price": 141700.0,
-      "change_1w": -8.64,
-      "change_1m": -3.67
+      "price": 138300.0,
+      "change_1w": -6.87,
+      "change_1m": -6.49
     },
     "넥스틸": {
       "ticker": "092790.KS",
-      "price": 13310.0,
-      "change_1w": -6.2,
-      "change_1m": 0.0
+      "price": 13080.0,
+      "change_1w": -4.73,
+      "change_1m": -8.98
     },
     "휴스틸": {
       "ticker": "005010.KS",
-      "price": 3875.0,
-      "change_1w": -3.73,
-      "change_1m": -1.27
+      "price": 3715.0,
+      "change_1w": -5.95,
+      "change_1m": -9.06
     }
   },
   "score": {
@@ -214,7 +214,6 @@
       75
     ],
     "labels": [
-      "09-30",
       "10-01",
       "10-02",
       "10-03",
@@ -226,7 +225,8 @@
       "10-10",
       "10-11",
       "10-13",
-      "10-14"
+      "10-14",
+      "10-15"
     ]
   },
   "shale_cycle": {
@@ -254,19 +254,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-14",
+        "date": "2026-10-15",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-14",
+        "date": "2026-10-15",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-14",
+        "date": "2026-10-15",
         "url": "Yahoo Finance",
         "error": null
       },
