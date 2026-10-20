@@ -1,25 +1,25 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-10-18T01:33:56+09:00",
+    "last_updated": "2026-10-20T10:03:51+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-18",
+        "date": "2026-10-20",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-18",
+        "date": "2026-10-20",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-18",
+        "date": "2026-10-20",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -31,7 +31,7 @@
       },
       "Permian Rig Count": {
         "status": "AUTO",
-        "date": "2026-10-10",
+        "date": "2026-10-18",
         "url": "https://www.oilpriceapi.com/data/rig-count/permian",
         "error": null
       },
@@ -69,28 +69,28 @@
   },
   "market": {
     "WTI": {
-      "value": 101.41,
+      "value": 98.46,
       "unit": "$/bbl",
-      "change_1w": 10.41,
-      "change_1m": -0.49,
+      "change_1w": 5.04,
+      "change_1m": -1.83,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 109.86,
+      "value": 109.49,
       "unit": "$/bbl",
-      "change_1w": 4.91,
-      "change_1m": 4.81,
+      "change_1w": 2.66,
+      "change_1m": 5.41,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1329.6,
+      "value": 1326.53,
       "unit": "KRW",
-      "change_1w": -0.84,
-      "change_1m": -3.62,
+      "change_1w": -0.57,
+      "change_1m": -4.21,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
@@ -146,21 +146,21 @@
   "stocks": {
     "세아제강": {
       "ticker": "306200.KS",
-      "price": 138900.0,
-      "change_1w": -4.34,
-      "change_1m": -7.77
+      "price": 138000.0,
+      "change_1w": -2.34,
+      "change_1m": -6.06
     },
     "넥스틸": {
       "ticker": "092790.KS",
-      "price": 13100.0,
-      "change_1w": -1.21,
-      "change_1m": -8.9
+      "price": 13070.0,
+      "change_1w": 4.31,
+      "change_1m": -6.78
     },
     "휴스틸": {
       "ticker": "005010.KS",
-      "price": 3775.0,
-      "change_1w": -2.96,
-      "change_1m": -5.63
+      "price": 3810.0,
+      "change_1w": 1.46,
+      "change_1m": -2.68
     }
   },
   "score": {
@@ -214,7 +214,6 @@
       75
     ],
     "labels": [
-      "10-04",
       "10-06",
       "10-07",
       "10-08",
@@ -226,7 +225,8 @@
       "10-15",
       "10-16",
       "10-17",
-      "10-18"
+      "10-18",
+      "10-20"
     ]
   },
   "shale_cycle": {
@@ -254,19 +254,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-18",
+        "date": "2026-10-20",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-18",
+        "date": "2026-10-20",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-18",
+        "date": "2026-10-20",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -278,7 +278,7 @@
       },
       "Permian Rig Count": {
         "status": "AUTO",
-        "date": "2026-10-10",
+        "date": "2026-10-18",
         "url": "https://www.oilpriceapi.com/data/rig-count/permian",
         "error": null
       },
