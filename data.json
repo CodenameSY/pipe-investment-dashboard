@@ -1,25 +1,25 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-10-22T09:38:44+09:00",
+    "last_updated": "2026-10-23T09:35:50+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-22",
+        "date": "2026-10-23",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-22",
+        "date": "2026-10-23",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-22",
+        "date": "2026-10-23",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -69,28 +69,28 @@
   },
   "market": {
     "WTI": {
-      "value": 98.11,
+      "value": 99.2,
       "unit": "$/bbl",
-      "change_1w": 3.18,
-      "change_1m": 3.72,
+      "change_1w": 1.26,
+      "change_1m": 7.64,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 110.09,
+      "value": 112.98,
       "unit": "$/bbl",
-      "change_1w": 3.8,
-      "change_1m": 10.92,
+      "change_1w": 6.67,
+      "change_1m": 9.6,
       "score": 52,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1325.88,
+      "value": 1324.08,
       "unit": "KRW",
-      "change_1w": -1.01,
-      "change_1m": -1.81,
+      "change_1w": -1.26,
+      "change_1m": -2.82,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
@@ -146,26 +146,26 @@
   "stocks": {
     "세아제강": {
       "ticker": "306200.KS",
-      "price": 130700.0,
-      "change_1w": -3.04,
-      "change_1m": -11.33
+      "price": 125300.0,
+      "change_1w": -9.79,
+      "change_1m": -16.24
     },
     "넥스틸": {
       "ticker": "092790.KS",
-      "price": 12200.0,
-      "change_1w": -1.61,
-      "change_1m": -12.73
+      "price": 11340.0,
+      "change_1w": -13.44,
+      "change_1m": -19.29
     },
     "휴스틸": {
       "ticker": "005010.KS",
-      "price": 3685.0,
-      "change_1w": 1.24,
-      "change_1m": -8.56
+      "price": 3550.0,
+      "change_1w": -5.96,
+      "change_1m": -12.78
     }
   },
   "score": {
     "pipe_cycle": 74,
-    "trend": "BULLISH · WEAKENING",
+    "trend": "BULLISH · FLAT",
     "components": {
       "OCTG/Spread": {
         "weight": 35,
@@ -210,11 +210,10 @@
       75,
       75,
       75,
-      75,
+      74,
       74
     ],
     "labels": [
-      "10-08",
       "10-09",
       "10-10",
       "10-11",
@@ -226,7 +225,8 @@
       "10-18",
       "10-20",
       "10-21",
-      "10-22"
+      "10-22",
+      "10-23"
     ]
   },
   "shale_cycle": {
@@ -254,19 +254,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-22",
+        "date": "2026-10-23",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-22",
+        "date": "2026-10-23",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-22",
+        "date": "2026-10-23",
         "url": "Yahoo Finance",
         "error": null
       },
