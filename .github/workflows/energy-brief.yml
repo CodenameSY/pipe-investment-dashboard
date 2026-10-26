@@ -1,0 +1,70 @@
+name: Energy services daily brief
+
+on:
+  schedule:
+    - cron: '7 23 * * *' # 08:07 Asia/Seoul; GitHub may delay execution.
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'run: 실전 / preview: 미발송 / test: 테스트 / resolve: 불확실 전송 수동 처리'
+        required: true
+        default: preview
+        type: choice
+        options: [preview, run, test, resolve-sent, resolve-retry]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: energy-brief-delivery
+  cancel-in-progress: false
+
+jobs:
+  brief:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify bot
+        run: python -m unittest discover -s energy_brief -p 'test_*.py'
+      - name: Check configuration
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: |
+          python - <<'PY'
+          import os
+          names = ('TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'SEC_USER_AGENT')
+          missing = [name for name in names if not os.environ.get(name)]
+          if missing:
+              raise SystemExit('Register GitHub Actions Secrets: ' + ', '.join(missing))
+          PY
+      - name: Load durable state
+        run: python -m energy_brief.persist --prepare
+      - name: Collect and deliver
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+          ENERGY_STATE_REMOTE: '1'
+          RUN_MODE: ${{ inputs.mode || 'run' }}
+        run: |
+          args=(--state .energy-state/state.json --feeds energy_brief/feeds.json --include-bkr --rigs)
+          case "$RUN_MODE" in
+            preview) args+=(--dry-run) ;;
+            test) args+=(--test-message) ;;
+            resolve-sent) args+=(--resolve-uncertain sent) ;;
+            resolve-retry) args+=(--resolve-uncertain retry) ;;
+            run) ;;
+            *) exit 2 ;;
+          esac
+          python -m energy_brief "${args[@]}"
+      - name: Run result
+        if: always()
+        run: |
+          echo '### Energy brief' >> "$GITHUB_STEP_SUMMARY"
+          echo 'See step logs for baseline, delivery, source errors, or missing Secrets. State is checkpointed on energy-brief-state before sending and after each receipt. Re-run with Run workflow. See energy_brief/README.md for ambiguous delivery recovery.' >> "$GITHUB_STEP_SUMMARY"

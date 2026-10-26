@@ -1,0 +1,19 @@
+name: Energy brief tests
+on:
+  push:
+    branches: [main]
+    paths: ['energy_brief/**', '.github/workflows/energy-brief*.yml']
+  pull_request:
+    paths: ['energy_brief/**', '.github/workflows/energy-brief*.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s energy_brief -p 'test_*.py' -v
