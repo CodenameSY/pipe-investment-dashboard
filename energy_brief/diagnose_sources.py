@@ -5,7 +5,8 @@ import os
 import urllib.request
 import urllib.error
 ua = os.environ.get("SEC_USER_AGENT", "")
-print(json.dumps({"check":"sec_header_validation","has_linebreak": "\\r" in ua or "\\n" in ua, "ascii_only":ua.isascii(), "has_at":"@" in ua, "outer_whitespace":ua != ua.strip()}),flush=True)
+print(json.dumps({"check":"sec_header_validation","has_linebreak": chr(13) in ua or chr(10) in ua, "ascii_only":ua.isascii(), "has_at":"@" in ua, "outer_whitespace":ua != ua.strip()}),flush=True)
+ua = " ".join(ua.split())
 checks = [
  ("sec_default", "https://data.sec.gov/submissions/CIK0000046765.json", ua, None),
  ("sec_accept", "https://data.sec.gov/submissions/CIK0000046765.json", ua, "application/json"),
