@@ -98,8 +98,9 @@ def get_bytes(url: str, user_agent: str, timeout: float = 30, limit: int = 2_000
 
 
 def get_json(url: str, user_agent: str) -> dict[str, Any]:
+    raw = get_bytes(url, user_agent)
     try:
-        value = json.loads(get_bytes(url, user_agent))
+        value = json.loads(raw)
     except (UnicodeError, ValueError) as exc:
         raise SourceError("invalid source JSON (expected JSON; server may have returned a block page)") from None
     if not isinstance(value, dict):
@@ -240,7 +241,8 @@ def collect_sec_partial(user_agent: str, tickers: tuple[str, ...],
 
 
 def collect_wti(user_agent: str, today: dt.date) -> dict[str, Any]:
-    raw = get_bytes(FRED_WTI, PUBLIC_USER_AGENT, limit=1_000_000)
+    recent_url = FRED_WTI + "&cosd=" + (today - dt.timedelta(days=30)).isoformat()
+    raw = get_bytes(recent_url, PUBLIC_USER_AGENT, limit=1_000_000)
     try:
         reader = csv.DictReader(io.StringIO(raw.decode("utf-8-sig")))
         date_field = "DATE" if "DATE" in (reader.fieldnames or ()) else "observation_date"
@@ -596,9 +598,9 @@ def run(args: argparse.Namespace) -> int:
         print("Pending report delivered.")
         return 0
 
-    user_agent = os.environ.get("SEC_USER_AGENT", "")
-    if not user_agent or "@" not in user_agent:
-        raise SourceError("SEC_USER_AGENT with contact email required")
+    user_agent = " ".join(os.environ.get("SEC_USER_AGENT", "").split())
+    if not user_agent or "@" not in user_agent or not user_agent.isascii():
+        raise SourceError("SEC_USER_AGENT must contain an English service name and real ASCII contact email")
     today = utc_today()
     tickers = DEFAULT_TICKERS + OPTIONAL_TICKERS if args.include_bkr else DEFAULT_TICKERS
     events, source_status = collect_sec_partial(user_agent, tickers, today)
@@ -624,6 +626,16 @@ def run(args: argparse.Namespace) -> int:
         source_status.update({f'rig:{key}': f'ERROR {error}' for key, error in rigs['errors'].items()})
     print(json.dumps({"date_utc": today.isoformat(), "sources": source_status}, ensure_ascii=False, sort_keys=True))
     had_errors = any(value.startswith("ERROR") for value in source_status.values())
+    collection_exit = (2 if any(value == "OK" for value in source_status.values()) else 1) if had_errors else 0
+    summary = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary:
+        with open(summary, "a", encoding="utf-8") as report:
+            report.write("\n### 수집 상태: " + ("일부 자료 미확보" if collection_exit == 2 else "전체 수집 실패" if collection_exit == 1 else "정상") + "\n\n")
+            for source, status in sorted(source_status.items()):
+                report.write(f"- {source}: {status}\n")
+    if collection_exit == 2:
+        print("PARTIAL: available sources processed; failed sources remain unverified.")
+
     if state.get("initialized") and "baselined_sources" not in state:
         # State written by the first implementation, before per-source baselines.
         state["baselined_sources"] = [f"sec:{ticker}" for ticker in tickers] + ["wti"]
@@ -663,22 +675,22 @@ def run(args: argparse.Namespace) -> int:
             save_state(path, state)
     if not new_events and not price_event and not rig_change and newly_baselined:
         print(f"Silently baselined {len(newly_baselined)} source(s); no message sent.")
-        return 1 if had_errors else 0
+        return collection_exit
     if not new_events and not price_event and not rig_change:
         print("No new qualifying SEC filings or WTI threshold event.")
-        return 1 if had_errors else 0
+        return collection_exit
     pending = make_pending(new_events, price_event, today, source_status, rigs, rig_change)
     if args.dry_run:
         print("\n\n--- Telegram chunk ---\n\n".join(chunk["text"] for chunk in pending["chunks"]))
         print("\nDry-run: state unchanged.")
-        return 1 if had_errors else 0
+        return collection_exit
     if not token or not chat_id:
         raise SourceError("TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID required")
     state["pending"] = pending
     save_state(path, state)  # Outbox committed before any external send.
     deliver_pending(state, path, token, chat_id)
     print(f"Delivered {len(pending['chunks'])} chunk(s), {len(new_events)} filing(s).")
-    return 1 if had_errors else 0
+    return collection_exit
 
 
 def main(argv: list[str] | None = None) -> int:
