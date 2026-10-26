@@ -108,7 +108,7 @@ class BotTests(unittest.TestCase):
                  patch.object(bot, "utc_today", return_value=TODAY), \
                  patch.object(bot, "collect_sec_partial", return_value=([EVENT], {"sec:HP": "OK", "sec:NE": "ERROR timeout"})), \
                  patch.object(bot, "collect_wti", side_effect=bot.SourceError("WTI stale")):
-                self.assertEqual(bot.run(args), 1)
+                self.assertEqual(bot.run(args), 2)
             saved = bot.load_state(path)
             self.assertIn("sec:HP", saved["baselined_sources"])
             self.assertNotIn("sec:NE", saved["baselined_sources"])
