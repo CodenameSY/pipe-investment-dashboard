@@ -457,7 +457,24 @@ def telegram_send(token: str, chat_id: str, message: str) -> int:
         # Never include the exception string: it contains the token-bearing URL.
         if exc.code >= 500:
             raise AmbiguousSendError(f"Telegram HTTP {exc.code}: delivery uncertain") from None
-        raise DefiniteSendError(f"Telegram HTTP {exc.code}") from None
+        reason = ""
+        if exc.code == 403:
+            # Match known descriptions, but never log raw responses or token URLs.
+            try:
+                description = str(json.loads(exc.read(10000)).get("description", "")).lower()
+            except Exception:
+                description = ""
+            known = {
+                "bot was blocked by the user": "recipient blocked this bot; unblock it and send /start",
+                "bot can't initiate conversation with a user": "open this exact bot and send /start first",
+                "bots can't send messages to bots": "chat_id belongs to a bot; use your personal or group chat ID",
+                "bot was kicked": "bot was removed from the target group/channel",
+                "bot is not a member": "add the bot to the target group/channel",
+                "not enough rights": "bot lacks permission to post in this chat",
+                "user is deactivated": "recipient account is deactivated",
+            }
+            reason = next((hint for phrase, hint in known.items() if phrase in description), "target chat forbids this bot; check /start, block status, membership and chat_id")
+        raise DefiniteSendError(f"Telegram HTTP {exc.code}" + (": " + reason if reason else "")) from None
     except (urllib.error.URLError, TimeoutError, socket.timeout, OSError) as exc:
         raise AmbiguousSendError(f"Telegram delivery uncertain ({type(exc).__name__})") from None
     try:
