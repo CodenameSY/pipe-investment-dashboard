@@ -1,0 +1,20 @@
+name: Energy source diagnostics
+on:
+  push:
+    paths: ['energy_brief/diagnose_sources.py', '.github/workflows/energy-source-diagnostics.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read source response metadata only
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: python energy_brief/diagnose_sources.py
