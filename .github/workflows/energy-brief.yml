@@ -2,7 +2,7 @@ name: Energy services daily brief
 
 on:
   schedule:
-    - cron: '7 23 * * *' # 08:07 Asia/Seoul; GitHub may delay execution.
+    - cron: '30 21 * * *' # 06:30 Asia/Seoul; GitHub may delay execution.
   workflow_dispatch:
     inputs:
       mode:
