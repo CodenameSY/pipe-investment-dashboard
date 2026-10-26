@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gzip
+import time
 import datetime as dt
 import email.utils
 import hashlib
@@ -66,23 +68,40 @@ def utc_today() -> dt.date:
     return dt.datetime.now(dt.timezone.utc).date()
 
 
-def get_bytes(url: str, user_agent: str, timeout: float = 20, limit: int = 2_000_000) -> bytes:
-    request = urllib.request.Request(url, headers={"User-Agent": user_agent, "Accept": "application/json,text/html,text/csv,*/*"})
-    try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
-            data = response.read(limit + 1)
-    except (urllib.error.URLError, OSError, TimeoutError) as exc:
-        raise SourceError(f"source request failed ({type(exc).__name__})") from exc
-    if len(data) > limit:
-        raise SourceError("source response exceeds size limit")
-    return data
+def get_bytes(url: str, user_agent: str, timeout: float = 30, limit: int = 2_000_000) -> bytes:
+    # GET only: bounded retries are safe. Telegram POST is deliberately separate.
+    request = urllib.request.Request(url, headers={
+        "User-Agent": user_agent, "Accept": "application/json,text/html,text/csv,*/*",
+        "Accept-Encoding": "identity"})
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                encoding = (response.headers.get("Content-Encoding") or "").lower()
+                data = response.read(limit + 1)
+            if len(data) > limit:
+                raise SourceError("source response exceeds size limit")
+            if encoding == "gzip" or data.startswith(b"\\x1f\\x8b"):
+                # Bound decompressed size as well as network response size.
+                with gzip.GzipFile(fileobj=io.BytesIO(data)) as stream:
+                    data = stream.read(limit + 1)
+                if len(data) > limit:
+                    raise SourceError("decompressed source response exceeds size limit")
+            return data
+        except (urllib.error.URLError, OSError, TimeoutError, EOFError) as exc:
+            code = getattr(exc, "code", None)
+            retryable = code is None or code in (403, 408, 429, 500, 502, 503, 504)
+            if not retryable or attempt == 2:
+                detail = f"HTTP {code}" if code else type(exc).__name__
+                raise SourceError(f"source request failed ({detail}; attempts={attempt + 1})") from None
+            time.sleep(2 ** (attempt + 1))
+    raise SourceError("source request failed")
 
 
 def get_json(url: str, user_agent: str) -> dict[str, Any]:
     try:
         value = json.loads(get_bytes(url, user_agent))
     except (UnicodeError, ValueError) as exc:
-        raise SourceError("invalid source JSON") from exc
+        raise SourceError("invalid source JSON (expected JSON; server may have returned a block page)") from None
     if not isinstance(value, dict):
         raise SourceError("unexpected source JSON shape")
     return value
