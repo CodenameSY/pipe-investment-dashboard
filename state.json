@@ -6,7 +6,8 @@
     "rig:MISC_RIGS",
     "rig:OIL_RIGS",
     "rig:PERMIAN_RIGS",
-    "rig:US_RIGS"
+    "rig:US_RIGS",
+    "wti"
   ],
   "initialized": true,
   "pending": null,
@@ -16,5 +17,8 @@
   },
   "seen_filings": [],
   "version": 1,
-  "wti_baseline": null
+  "wti_baseline": {
+    "date": "2026-10-20",
+    "price": 107.89
+  }
 }
