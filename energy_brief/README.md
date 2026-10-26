@@ -19,7 +19,7 @@ HP, PTEN, HAL, SLB, WFRD, RIG, NE, SDRL, VAL 및 비교용 BKR의 새 공시와 
 
 5. [Actions](https://github.com/CodenameSY/pipe-investment-dashboard/actions/workflows/energy-brief.yml) → **Energy services daily brief** → **Run workflow**에서 `test`를 선택해 테스트 메시지 수신을 확인합니다.
 6. `preview`로 소스 수집을 점검합니다. 미발송·상태 JSON 미변경입니다. 처음 한 번은 빈 상태 브랜치가 생성될 수 있습니다.
-7. `run`으로 첫 기준선을 저장합니다. 첫 성공 관측은 과거 뉴스 폭주를 막기 위해 발송하지 않습니다. 이후 매일 **한국시간 08:07** 예정으로 실행되고, 새 대상 사건이나 임계치 변화가 있을 때만 발송합니다. 사용자가 늦게 Secrets를 등록했으면 다시 `run`을 실행하면 됩니다.
+7. `run`으로 첫 기준선을 저장합니다. 첫 성공 관측은 과거 뉴스 폭주를 막기 위해 발송하지 않습니다. 이후 매일 **한국시간 06:30** 예정으로 실행되고, 새 대상 사건이나 임계치 변화가 있을 때만 발송합니다. 사용자가 늦게 Secrets를 등록했으면 다시 `run`을 실행하면 됩니다.
 
 GitHub cron은 정시 실행을 보장하지 않으며 혼잡 시 지연·누락될 수 있습니다. 공개 저장소의 장기간 활동 부재로 일정이 비활성화될 수 있으므로 Actions 화면을 확인하세요. [공식 schedule 문서](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule). GitHub Actions의 계정별 무료 실행량·정책을 따르며 별도 유료 서비스는 설치하지 않습니다.
 
