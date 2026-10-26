@@ -71,7 +71,7 @@ def utc_today() -> dt.date:
 def get_bytes(url: str, user_agent: str, timeout: float = 30, limit: int = 2_000_000) -> bytes:
     # GET only: bounded retries are safe. Telegram POST is deliberately separate.
     request = urllib.request.Request(url, headers={
-        "User-Agent": user_agent, "Accept": "application/json,text/html,text/csv,*/*",
+        "User-Agent": user_agent,
         "Accept-Encoding": "identity"})
     for attempt in range(3):
         try:
