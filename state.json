@@ -1,0 +1,20 @@
+{
+  "baselined_sources": [
+    "ir:PTEN",
+    "rig:GAS_RIGS",
+    "rig:HAYNESVILLE_RIGS",
+    "rig:MISC_RIGS",
+    "rig:OIL_RIGS",
+    "rig:PERMIAN_RIGS",
+    "rig:US_RIGS"
+  ],
+  "initialized": true,
+  "pending": null,
+  "rig_baseline": {
+    "date": "2026-10-23",
+    "value": 603
+  },
+  "seen_filings": [],
+  "version": 1,
+  "wti_baseline": null
+}
