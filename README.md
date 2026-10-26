@@ -32,4 +32,4 @@ OCTG/Spread 35%, Rig Count 20%, Oil 10%, HRC 10%, Export 10%, US Policy 10%, FX 
 
 ## 에너지 서비스·해양시추 Telegram 브리프
 
-매일 KST 08:07에 선별 공시·공개 지표 변화를 점검합니다. [설정·무료 데이터 범위·운영 안내](energy_brief/README.md)를 읽고 GitHub Secrets 세 개를 등록하세요.
+매일 KST 06:30에 선별 공시·공개 지표 변화를 점검합니다. [설정·무료 데이터 범위·운영 안내](energy_brief/README.md)를 읽고 GitHub Secrets 세 개를 등록하세요.
