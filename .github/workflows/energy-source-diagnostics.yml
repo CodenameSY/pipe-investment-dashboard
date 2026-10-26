@@ -18,3 +18,16 @@ jobs:
         env:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
         run: python energy_brief/diagnose_sources.py
+      - name: Verify real collection without sending or changing delivery state
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: |
+          set +e
+          python -m energy_brief --state work/diagnostic-state.json --feeds energy_brief/feeds.json --include-bkr --rigs --dry-run
+          result=$?
+          set -e
+          if [ "$result" -eq 2 ]; then
+            echo "::warning::Partial source coverage; see collection summary. No message sent."
+          else
+            exit "$result"
+          fi
