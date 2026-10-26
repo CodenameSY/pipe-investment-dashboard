@@ -1,0 +1,27 @@
+name: Send reviewed energy brief 2026-10-26
+on:
+  push:
+    branches: [main]
+    paths: ['energy_brief/manual/2026-10-26.txt']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: energy-brief-delivery
+  cancel-in-progress: false
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m energy_brief.persist --prepare
+      - name: Send reviewed brief with durable receipts
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ENERGY_STATE_REMOTE: '1'
+        run: python -m energy_brief.send_reviewed energy_brief/manual/2026-10-26.txt .energy-state/state.json
