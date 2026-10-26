@@ -8,7 +8,7 @@ on:
       mode:
         description: 'run: 실전 / preview: 미발송 / test: 테스트 / resolve: 불확실 전송 수동 처리'
         required: true
-        default: preview
+        default: run
         type: choice
         options: [preview, run, test, resolve-sent, resolve-retry]
 
