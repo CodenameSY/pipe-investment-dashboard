@@ -62,7 +62,15 @@ jobs:
             run) ;;
             *) exit 2 ;;
           esac
+          set +e
           python -m energy_brief "${args[@]}"
+          result=$?
+          set -e
+          if [ "$result" -eq 2 ]; then
+            echo "::warning::일부 데이터 소스를 가져오지 못했습니다. 수집 상태 요약을 확인하세요. 정상 소스와 전송 처리는 완료했습니다."
+          else
+            exit "$result"
+          fi
       - name: Run result
         if: always()
         run: |
