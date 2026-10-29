@@ -24,8 +24,8 @@
   "pending": {
     "chunks": [
       {
-        "status": "sending",
-        "telegram_message_id": null,
+        "status": "sent",
+        "telegram_message_id": 6,
         "text": "[90aeb3c4db 1/1]\n에너지 브리프 | 2026-10-29 UTC\n\n핵심 변화\n최근 7일 SEC 공시·IR 소식 1건. 공시 항목 또는 본문 표현으로 선별했습니다.\nWTI 2026-10-20 $107.89 → 2026-10-27 $103.37 (-4.52달러, -4.2%).\n\nLand\n• PTEN · 2026-10-28 · IR (Patterson-UTI Energy Reports Financial Results for the Quarter Ended September 30, 2026 · 본문 표현: 실적)\n  https://investor.patenergy.com/Investors/News-and-Events/news/news-details/2026/Patterson-UTI-Energy-Reports-Financial-Results-for-the-Quarter-Ended-September-30-2026/default.aspx\nUS_RIGS: 603 (2026-10-23, 관측일·재게시 자료)\nhttps://www.aogr.com/web-exclusives/us-rig-count/2026\nPERMIAN_RIGS: 267 (2026-10-24, 페이지 기준일·원자료 미대조)\nhttps://www.oilpriceapi.com/data/rig-count/permian\nHAYNESVILLE_RIGS: 57 (2026-10-24, 페이지 기준일·원자료 미대조)\nhttps://www.oilpriceapi.com/data/rig-count/haynesville\n\nServices\nSEC 수집 실패: HAL, SLB, WFRD, BKR\n\nOffshore\nSEC 수집 실패: NE, SDRL, RIG, VAL\n\n유가 연결\nWTI 현물 가격 변화는 업스트림 지출과 서비스 수요에 간접적으로 작용할 수 있습니다. 개별 기업 영향은 공시에서 확인해야 합니다.\nhttps://fred.stlouisfed.org/series/DCOILWTICO\n\n자료 상태\n수집 실패: sec:HP, sec:PTEN, sec:HAL, sec:SLB, sec:WFRD, sec:RIG, sec:NE, sec:SDRL, sec:VAL, sec:BKR, ir:RIG. 해당 자료는 이번 판단에서 제외했습니다.\n\n미확보: WTI 12~24개월 곡선, frac spread, LNG 일별 feedgas, 업계 전체 offshore 가동률/dayrate, FPSO/subsea FID 전수 감시.\n\n투자판단\n공시 원문에서 계약 규모·마진·가이던스와 일회성 항목을 확인하기 전에는 실적 또는 주가 방향을 단정하지 않습니다."
       }
     ],
