@@ -1,25 +1,25 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-10-28T10:14:32+09:00",
+    "last_updated": "2026-10-29T10:46:41+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -55,7 +55,7 @@
       },
       "SteelBenchmarker HRC": {
         "status": "AUTO",
-        "date": "October 14, 2026",
+        "date": "October 28, 2026",
         "url": "https://steelbenchmarker.com/history.pdf",
         "error": null
       },
@@ -69,28 +69,28 @@
   },
   "market": {
     "WTI": {
-      "value": 101.13,
+      "value": 102.0,
       "unit": "$/bbl",
-      "change_1w": -0.65,
-      "change_1m": 9.21,
+      "change_1w": 4.99,
+      "change_1m": 14.12,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 110.82,
+      "value": 110.77,
       "unit": "$/bbl",
-      "change_1w": 1.87,
-      "change_1m": 5.26,
+      "change_1w": 1.79,
+      "change_1m": 7.97,
       "score": 52,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1331.91,
+      "value": 1332.68,
       "unit": "KRW",
-      "change_1w": 0.6,
-      "change_1m": -2.03,
+      "change_1w": 0.53,
+      "change_1m": -1.32,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
@@ -118,13 +118,13 @@
       "change_1m": 1.1
     },
     "US_HRC": {
-      "value": 1188.0,
+      "value": 1231.0,
       "unit": "$/st",
-      "change_1m": 1.89,
+      "change_1m": 4.94,
       "score": 52,
       "manual": false,
       "source": "SteelBenchmarker",
-      "source_date": "October 14, 2026",
+      "source_date": "October 28, 2026",
       "source_url": "https://steelbenchmarker.com/history.pdf"
     },
     "US_OCTG": {
@@ -136,40 +136,40 @@
       "source": "config.json/manual"
     },
     "OCTG_HRC_SPREAD": {
-      "value": 1137.0,
+      "value": 1094.0,
       "unit": "$/st",
-      "change_1m": -1.9,
-      "score": 90,
+      "change_1m": -5.03,
+      "score": 88,
       "derived": true
     }
   },
   "stocks": {
     "세아제강": {
       "ticker": "306200.KS",
-      "price": 119800.0,
-      "change_1w": -9.38,
-      "change_1m": -13.31
+      "price": 118100.0,
+      "change_1w": -8.52,
+      "change_1m": -19.93
     },
     "넥스틸": {
       "ticker": "092790.KS",
-      "price": 11120.0,
-      "change_1w": -9.3,
-      "change_1m": -17.01
+      "price": 10800.0,
+      "change_1w": -8.55,
+      "change_1m": -21.28
     },
     "휴스틸": {
       "ticker": "005010.KS",
-      "price": 3455.0,
-      "change_1w": -6.62,
-      "change_1m": -9.79
+      "price": 3350.0,
+      "change_1w": -7.59,
+      "change_1m": -15.4
     }
   },
   "score": {
     "pipe_cycle": 74,
-    "trend": "BULLISH · WEAKENING",
+    "trend": "BULLISH · FLAT",
     "components": {
       "OCTG/Spread": {
         "weight": 35,
-        "score": 90
+        "score": 89
       },
       "Rig Count": {
         "weight": 20,
@@ -205,16 +205,15 @@
       75,
       75,
       75,
-      75,
       74,
       74,
       74,
       74,
       75,
+      74,
       74
     ],
     "labels": [
-      "10-14",
       "10-15",
       "10-16",
       "10-17",
@@ -226,7 +225,8 @@
       "10-24",
       "10-25",
       "10-27",
-      "10-28"
+      "10-28",
+      "10-29"
     ]
   },
   "shale_cycle": {
@@ -254,19 +254,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -302,7 +302,7 @@
       },
       "SteelBenchmarker HRC": {
         "status": "AUTO",
-        "date": "October 14, 2026",
+        "date": "October 28, 2026",
         "url": "https://steelbenchmarker.com/history.pdf",
         "error": null
       },
