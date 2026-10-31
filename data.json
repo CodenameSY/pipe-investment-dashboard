@@ -1,31 +1,31 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-10-30T10:53:51+09:00",
+    "last_updated": "2026-10-31T10:32:15+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-30",
+        "date": "2026-10-31",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-30",
+        "date": "2026-10-31",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-30",
+        "date": "2026-10-31",
         "url": "Yahoo Finance",
         "error": null
       },
       "Rig Count": {
         "status": "AUTO",
-        "date": "2026-10-23",
+        "date": "2026-10-30",
         "url": "https://www.aogr.com/web-exclusives/us-rig-count/2026",
         "error": null
       },
@@ -69,19 +69,19 @@
   },
   "market": {
     "WTI": {
-      "value": 104.38,
+      "value": 102.95,
       "unit": "$/bbl",
-      "change_1w": 4.94,
-      "change_1m": 15.44,
+      "change_1w": -0.31,
+      "change_1m": 10.85,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 113.44,
+      "value": 112.33,
       "unit": "$/bbl",
-      "change_1w": 0.24,
-      "change_1m": 9.57,
+      "change_1w": -3.76,
+      "change_1m": 9.79,
       "score": 52,
       "manual": false,
       "source": "Yahoo Finance"
@@ -103,19 +103,19 @@
       "score": 76,
       "manual": false,
       "source": "AOGR / Baker Hughes data",
-      "source_date": "2026-10-23",
-      "change_1m": 0.67
+      "source_date": "2026-10-30",
+      "change_1m": 0.84
     },
     "OIL_RIGS": {
-      "value": 460,
+      "value": 462,
       "unit": "rigs",
-      "change_1w": 0,
+      "change_1w": 2,
       "change_4w": 9,
       "score": 78,
       "manual": false,
       "source": "AOGR / Baker Hughes data",
-      "source_date": "2026-10-23",
-      "change_1m": 1.1
+      "source_date": "2026-10-30",
+      "change_1m": 1.32
     },
     "US_HRC": {
       "value": 1231.0,
@@ -146,21 +146,21 @@
   "stocks": {
     "세아제강": {
       "ticker": "306200.KS",
-      "price": 118100.0,
-      "change_1w": -5.9,
-      "change_1m": -19.22
+      "price": 119300.0,
+      "change_1w": -4.94,
+      "change_1m": -18.4
     },
     "넥스틸": {
       "ticker": "092790.KS",
-      "price": 10380.0,
-      "change_1w": -7.24,
-      "change_1m": -21.36
+      "price": 10420.0,
+      "change_1w": -6.88,
+      "change_1m": -21.06
     },
     "휴스틸": {
       "ticker": "005010.KS",
-      "price": 3290.0,
-      "change_1w": -7.58,
-      "change_1m": -14.32
+      "price": 3300.0,
+      "change_1w": -7.3,
+      "change_1m": -14.06
     }
   },
   "score": {
@@ -203,18 +203,17 @@
       75,
       75,
       75,
-      75,
       74,
       74,
       74,
       74,
       75,
+      74,
       74,
       74,
       74
     ],
     "labels": [
-      "10-16",
       "10-17",
       "10-18",
       "10-20",
@@ -226,7 +225,8 @@
       "10-27",
       "10-28",
       "10-29",
-      "10-30"
+      "10-30",
+      "10-31"
     ]
   },
   "shale_cycle": {
@@ -254,25 +254,25 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-30",
+        "date": "2026-10-31",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-30",
+        "date": "2026-10-31",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-30",
+        "date": "2026-10-31",
         "url": "Yahoo Finance",
         "error": null
       },
       "Rig Count": {
         "status": "AUTO",
-        "date": "2026-10-23",
+        "date": "2026-10-30",
         "url": "https://www.aogr.com/web-exclusives/us-rig-count/2026",
         "error": null
       },
