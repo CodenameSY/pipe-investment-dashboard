@@ -1462,8 +1462,8 @@
       "HP_MARGIN_DAY": 18669,
       "HP_ACTIVE_RIGS": 142,
       "PTEN_COMPLETION_GP": 123.0,
-      "WTI": 102.95,
-      "BRENT": 112.33,
+      "WTI": 104.12,
+      "BRENT": 117.64,
       "US_RIGS": 603,
       "OIL_RIGS": 460,
       "US_HRC": 1231.0,
@@ -1484,7 +1484,28 @@
       "PTEN_COMPLETION_GP": 123.0,
       "WTI": 102.95,
       "BRENT": 112.33,
-      "USDKRW": 1337.98,
+      "USDKRW": 1335.1,
+      "US_RIGS": 603,
+      "OIL_RIGS": 462,
+      "US_HRC": 1231.0,
+      "US_OCTG": 2325.0,
+      "OCTG_HRC_SPREAD": 1094.0
+    },
+    {
+      "date": "2026-11-01",
+      "PIPE_SCORE": 74,
+      "PERMIAN_PERIOD": "2026-09",
+      "PERMIAN_DUC": 844.0,
+      "PERMIAN_COMPLETIONS_Q": null,
+      "PERMIAN_MONTHLY_COMPLETIONS": 492.0,
+      "PERMIAN_RIGS": 267,
+      "DUC_COVER": 1.72,
+      "HP_MARGIN_DAY": 18669,
+      "HP_ACTIVE_RIGS": 142,
+      "PTEN_COMPLETION_GP": 123.0,
+      "WTI": 104.12,
+      "BRENT": 117.64,
+      "USDKRW": 1335.1,
       "US_RIGS": 603,
       "OIL_RIGS": 462,
       "US_HRC": 1231.0,
@@ -1854,5 +1875,5 @@
       "DUC_COVER": 1.72
     }
   ],
-  "permian_monthly_source": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180"
+  "permian_monthly_source": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-10&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180"
 }

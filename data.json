@@ -1,25 +1,25 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-10-31T10:32:15+09:00",
+    "last_updated": "2026-11-01T02:50:56+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-31",
+        "date": "2026-11-01",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-31",
+        "date": "2026-11-01",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-31",
+        "date": "2026-11-01",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -31,14 +31,14 @@
       },
       "Permian Rig Count": {
         "status": "AUTO",
-        "date": "2026-10-24",
+        "date": "2026-10-31",
         "url": "https://www.oilpriceapi.com/data/rig-count/permian",
         "error": null
       },
       "EIA STEO": {
         "status": "AUTO",
         "date": "2026-09",
-        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
+        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-10&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
         "error": null
       },
       "HP IR": {
@@ -69,28 +69,28 @@
   },
   "market": {
     "WTI": {
-      "value": 102.95,
+      "value": 104.12,
       "unit": "$/bbl",
-      "change_1w": -0.31,
-      "change_1m": 10.85,
+      "change_1w": 0.82,
+      "change_1m": 12.11,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 112.33,
+      "value": 117.64,
       "unit": "$/bbl",
-      "change_1w": -3.76,
-      "change_1m": 9.79,
+      "change_1w": 0.79,
+      "change_1m": 14.98,
       "score": 52,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1337.98,
+      "value": 1335.1,
       "unit": "KRW",
-      "change_1w": 0.9,
-      "change_1m": -1.39,
+      "change_1w": 1.01,
+      "change_1m": -1.87,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
@@ -109,7 +109,7 @@
     "OIL_RIGS": {
       "value": 462,
       "unit": "rigs",
-      "change_1w": 2,
+      "change_1w": 0,
       "change_4w": 9,
       "score": 78,
       "manual": false,
@@ -202,19 +202,18 @@
       75,
       75,
       75,
-      75,
       74,
       74,
       74,
       74,
       75,
+      74,
       74,
       74,
       74,
       74
     ],
     "labels": [
-      "10-17",
       "10-18",
       "10-20",
       "10-21",
@@ -226,7 +225,8 @@
       "10-28",
       "10-29",
       "10-30",
-      "10-31"
+      "10-31",
+      "11-01"
     ]
   },
   "shale_cycle": {
@@ -254,19 +254,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-10-31",
+        "date": "2026-11-01",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-10-31",
+        "date": "2026-11-01",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-10-31",
+        "date": "2026-11-01",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -278,14 +278,14 @@
       },
       "Permian Rig Count": {
         "status": "AUTO",
-        "date": "2026-10-24",
+        "date": "2026-10-31",
         "url": "https://www.oilpriceapi.com/data/rig-count/permian",
         "error": null
       },
       "EIA STEO": {
         "status": "AUTO",
         "date": "2026-09",
-        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-09&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
+        "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-10&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
         "error": null
       },
       "HP IR": {
