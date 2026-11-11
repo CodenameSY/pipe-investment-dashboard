@@ -1,25 +1,25 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-11-10T13:03:52+09:00",
+    "last_updated": "2026-11-11T10:53:01+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-11-10",
+        "date": "2026-11-11",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-11-10",
+        "date": "2026-11-11",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-11-10",
+        "date": "2026-11-11",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -37,7 +37,7 @@
       },
       "EIA STEO": {
         "status": "AUTO",
-        "date": "2026-09",
+        "date": "2026-10",
         "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-10&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
         "error": null
       },
@@ -69,28 +69,28 @@
   },
   "market": {
     "WTI": {
-      "value": 85.72,
+      "value": 86.18,
       "unit": "$/bbl",
-      "change_1w": -11.13,
-      "change_1m": -6.67,
+      "change_1w": -10.31,
+      "change_1m": -8.06,
       "score": 72,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 91.47,
+      "value": 91.86,
       "unit": "$/bbl",
-      "change_1w": -12.69,
-      "change_1m": -12.65,
+      "change_1w": -11.33,
+      "change_1m": -13.87,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1344.42,
+      "value": 1338.77,
       "unit": "KRW",
-      "change_1w": -0.03,
-      "change_1m": 0.27,
+      "change_1w": -0.31,
+      "change_1m": 0.35,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
@@ -146,26 +146,26 @@
   "stocks": {
     "세아제강": {
       "ticker": "306200.KS",
-      "price": 114100.0,
-      "change_1w": -6.01,
-      "change_1m": -20.49
+      "price": 116400.0,
+      "change_1w": -5.98,
+      "change_1m": -17.62
     },
     "넥스틸": {
       "ticker": "092790.KS",
-      "price": 9670.0,
-      "change_1w": -6.12,
-      "change_1m": -23.5
+      "price": 10000.0,
+      "change_1w": -5.21,
+      "change_1m": -20.19
     },
     "휴스틸": {
       "ticker": "005010.KS",
-      "price": 3410.0,
-      "change_1w": 0.29,
-      "change_1m": -9.43
+      "price": 3505.0,
+      "change_1w": 1.15,
+      "change_1m": -6.66
     }
   },
   "score": {
     "pipe_cycle": 75,
-    "trend": "BULLISH · IMPROVING",
+    "trend": "BULLISH · FLAT",
     "components": {
       "OCTG/Spread": {
         "weight": 35,
@@ -199,7 +199,6 @@
   },
   "history": {
     "pipe_score": [
-      75,
       74,
       74,
       74,
@@ -211,10 +210,10 @@
       74,
       74,
       74,
+      75,
       75
     ],
     "labels": [
-      "10-27",
       "10-28",
       "10-29",
       "10-30",
@@ -226,17 +225,18 @@
       "11-06",
       "11-07",
       "11-08",
-      "11-10"
+      "11-10",
+      "11-11"
     ]
   },
   "shale_cycle": {
     "signal": "SHALE CYCLE CONFIRMED",
     "score": 81,
-    "PERMIAN_DUC": 844.0,
-    "PERMIAN_COMPLETIONS": 492.0,
+    "PERMIAN_DUC": 831.0,
+    "PERMIAN_COMPLETIONS": 500.0,
     "PERMIAN_COMPLETIONS_Q": null,
-    "DUC_COVER": 1.72,
-    "DUC_CHANGE": 1.81,
+    "DUC_COVER": 1.66,
+    "DUC_CHANGE": 1.96,
     "PERMIAN_RIGS": 267,
     "FRAC_SPREAD": null,
     "HP_ACTIVE_RIGS": 142,
@@ -254,19 +254,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-11-10",
+        "date": "2026-11-11",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-11-10",
+        "date": "2026-11-11",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-11-10",
+        "date": "2026-11-11",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -284,7 +284,7 @@
       },
       "EIA STEO": {
         "status": "AUTO",
-        "date": "2026-09",
+        "date": "2026-10",
         "url": "https://api.eia.gov/v2/steo/data/?api_key=DEMO_KEY&frequency=monthly&data%5B0%5D=value&facets%5BseriesId%5D%5B%5D=DUCSPM&facets%5BseriesId%5D%5B%5D=NWCPM&facets%5BseriesId%5D%5B%5D=RIGSPM&end=2026-10&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=180",
         "error": null
       },
@@ -314,10 +314,10 @@
       }
     },
     "as_of": {
-      "PERMIAN_DUC": "2026-09 EIA STEO monthly",
+      "PERMIAN_DUC": "2026-10 EIA STEO monthly",
       "HP": "FY2026 Q3",
       "PTEN": "2026 Q3 guidance / 2026 Q2 commentary"
     },
-    "PERMIAN_PERIOD": "2026-09"
+    "PERMIAN_PERIOD": "2026-10"
   }
 }
