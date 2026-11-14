@@ -1,25 +1,25 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-11-14T11:18:40+09:00",
+    "last_updated": "2026-11-15T03:47:26+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-11-14",
+        "date": "2026-11-15",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-11-14",
+        "date": "2026-11-15",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-11-14",
+        "date": "2026-11-15",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -69,28 +69,28 @@
   },
   "market": {
     "WTI": {
-      "value": 88.92,
+      "value": 88.56,
       "unit": "$/bbl",
-      "change_1w": -2.1,
-      "change_1m": -9.24,
+      "change_1w": -2.5,
+      "change_1m": -9.6,
       "score": 72,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 96.08,
+      "value": 95.84,
       "unit": "$/bbl",
-      "change_1w": -2.28,
-      "change_1m": -9.29,
+      "change_1w": -2.52,
+      "change_1m": -9.52,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1333.78,
+      "value": 1336.2,
       "unit": "KRW",
-      "change_1w": -1.66,
-      "change_1m": -0.42,
+      "change_1w": -1.94,
+      "change_1m": -0.35,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
@@ -98,7 +98,7 @@
     "US_RIGS": {
       "value": 601,
       "unit": "rigs",
-      "change_1w": -3,
+      "change_1w": 0,
       "change_4w": 11,
       "score": 76,
       "manual": false,
@@ -202,19 +202,18 @@
       74,
       74,
       74,
-      74,
       75,
       74,
       74,
       74,
       75,
       75,
+      74,
       74,
       74,
       74
     ],
     "labels": [
-      "10-31",
       "11-01",
       "11-03",
       "11-04",
@@ -226,7 +225,8 @@
       "11-11",
       "11-12",
       "11-13",
-      "11-14"
+      "11-14",
+      "11-15"
     ]
   },
   "shale_cycle": {
@@ -254,19 +254,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-11-14",
+        "date": "2026-11-15",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-11-14",
+        "date": "2026-11-15",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-11-14",
+        "date": "2026-11-15",
         "url": "Yahoo Finance",
         "error": null
       },
