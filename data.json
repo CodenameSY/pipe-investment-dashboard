@@ -1,25 +1,25 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-11-21T12:08:59+09:00",
+    "last_updated": "2026-11-22T05:11:33+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [],
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-11-21",
+        "date": "2026-11-22",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-11-21",
+        "date": "2026-11-22",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-11-21",
+        "date": "2026-11-22",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -69,20 +69,20 @@
   },
   "market": {
     "WTI": {
-      "value": 83.62,
+      "value": 83.98,
       "unit": "$/bbl",
-      "change_1w": -5.58,
-      "change_1m": -15.93,
+      "change_1w": -5.17,
+      "change_1m": -15.57,
       "score": 72,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 89.87,
+      "value": 92.57,
       "unit": "$/bbl",
-      "change_1w": -6.23,
-      "change_1m": -20.59,
-      "score": 72,
+      "change_1w": -3.41,
+      "change_1m": -18.2,
+      "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
@@ -98,7 +98,7 @@
     "US_RIGS": {
       "value": 607,
       "unit": "rigs",
-      "change_1w": 6,
+      "change_1w": 0,
       "change_4w": 11,
       "score": 76,
       "manual": false,
@@ -109,7 +109,7 @@
     "OIL_RIGS": {
       "value": 469,
       "unit": "rigs",
-      "change_1w": 6,
+      "change_1w": 0,
       "change_4w": 9,
       "score": 78,
       "manual": false,
@@ -164,8 +164,8 @@
     }
   },
   "score": {
-    "pipe_cycle": 75,
-    "trend": "BULLISH · IMPROVING",
+    "pipe_cycle": 74,
+    "trend": "BULLISH · WEAKENING",
     "components": {
       "OCTG/Spread": {
         "weight": 35,
@@ -177,7 +177,7 @@
       },
       "Oil": {
         "weight": 10,
-        "score": 72
+        "score": 68
       },
       "HRC Cost": {
         "weight": 10,
@@ -200,7 +200,6 @@
   "history": {
     "pipe_score": [
       74,
-      74,
       75,
       75,
       74,
@@ -211,10 +210,10 @@
       74,
       75,
       74,
-      75
+      75,
+      74
     ],
     "labels": [
-      "11-07",
       "11-08",
       "11-10",
       "11-11",
@@ -226,7 +225,8 @@
       "11-18",
       "11-19",
       "11-20",
-      "11-21"
+      "11-21",
+      "11-22"
     ]
   },
   "shale_cycle": {
@@ -254,19 +254,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-11-21",
+        "date": "2026-11-22",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-11-21",
+        "date": "2026-11-22",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-11-21",
+        "date": "2026-11-22",
         "url": "Yahoo Finance",
         "error": null
       },
