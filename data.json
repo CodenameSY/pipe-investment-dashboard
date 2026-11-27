@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "v5.7",
-    "last_updated": "2026-11-26T13:06:51+09:00",
+    "last_updated": "2026-11-27T13:10:45+09:00",
     "mode": "v5.7 rig-count mirror automation + EIA/IR/HRC auto + manual OCTG/FSC/qualitative inputs",
     "errors": [
       "EIA STEO auto: HTTPSConnectionPool(host='api.eia.gov', port=443): Read timed out. (read timeout=35)"
@@ -9,19 +9,19 @@
     "source_status": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-11-26",
+        "date": "2026-11-27",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-11-26",
+        "date": "2026-11-27",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-11-26",
+        "date": "2026-11-27",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -33,7 +33,7 @@
       },
       "Permian Rig Count": {
         "status": "AUTO",
-        "date": "2026-11-26",
+        "date": "2026-08-28",
         "url": "https://www.oilpriceapi.com/data/rig-count/permian",
         "error": null
       },
@@ -71,28 +71,28 @@
   },
   "market": {
     "WTI": {
-      "value": 84.32,
+      "value": 85.74,
       "unit": "$/bbl",
-      "change_1w": 1.27,
-      "change_1m": -15.6,
+      "change_1w": 3.04,
+      "change_1m": -16.58,
       "score": 72,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "BRENT": {
-      "value": 91.09,
+      "value": 92.27,
       "unit": "$/bbl",
-      "change_1w": -0.94,
-      "change_1m": -20.01,
+      "change_1w": 0.32,
+      "change_1m": -19.99,
       "score": 65,
       "manual": false,
       "source": "Yahoo Finance"
     },
     "USDKRW": {
-      "value": 1343.07,
+      "value": 1341.45,
       "unit": "KRW",
-      "change_1w": 0.95,
-      "change_1m": 1.23,
+      "change_1w": 0.5,
+      "change_1m": 0.08,
       "score": 70,
       "manual": false,
       "source": "Yahoo Finance"
@@ -111,7 +111,7 @@
     "OIL_RIGS": {
       "value": 470,
       "unit": "rigs",
-      "change_1w": 1,
+      "change_1w": 0,
       "change_4w": 9,
       "score": 78,
       "manual": false,
@@ -148,26 +148,26 @@
   "stocks": {
     "세아제강": {
       "ticker": "306200.KS",
-      "price": 101100.0,
-      "change_1w": -9.65,
-      "change_1m": -15.61
+      "price": 104400.0,
+      "change_1w": -3.06,
+      "change_1m": -12.56
     },
     "넥스틸": {
       "ticker": "092790.KS",
-      "price": 6930.0,
-      "change_1w": -11.04,
-      "change_1m": -38.24
+      "price": 7440.0,
+      "change_1w": 1.22,
+      "change_1m": -30.14
     },
     "휴스틸": {
       "ticker": "005010.KS",
-      "price": 2325.0,
-      "change_1w": -12.43,
-      "change_1m": -32.8
+      "price": 2465.0,
+      "change_1w": -3.33,
+      "change_1m": -25.98
     }
   },
   "score": {
     "pipe_cycle": 73,
-    "trend": "BULLISH · WEAKENING",
+    "trend": "BULLISH · FLAT",
     "components": {
       "OCTG/Spread": {
         "weight": 35,
@@ -206,17 +206,16 @@
       74,
       74,
       74,
-      74,
       75,
       74,
       75,
       74,
       75,
       75,
+      73,
       73
     ],
     "labels": [
-      "11-12",
       "11-13",
       "11-14",
       "11-15",
@@ -228,7 +227,8 @@
       "11-22",
       "11-24",
       "11-25",
-      "11-26"
+      "11-26",
+      "11-27"
     ]
   },
   "shale_cycle": {
@@ -256,19 +256,19 @@
     "sources": {
       "WTI": {
         "status": "AUTO",
-        "date": "2026-11-26",
+        "date": "2026-11-27",
         "url": "Yahoo Finance",
         "error": null
       },
       "BRENT": {
         "status": "AUTO",
-        "date": "2026-11-26",
+        "date": "2026-11-27",
         "url": "Yahoo Finance",
         "error": null
       },
       "USDKRW": {
         "status": "AUTO",
-        "date": "2026-11-26",
+        "date": "2026-11-27",
         "url": "Yahoo Finance",
         "error": null
       },
@@ -280,7 +280,7 @@
       },
       "Permian Rig Count": {
         "status": "AUTO",
-        "date": "2026-11-26",
+        "date": "2026-08-28",
         "url": "https://www.oilpriceapi.com/data/rig-count/permian",
         "error": null
       },
